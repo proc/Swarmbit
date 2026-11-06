@@ -1,0 +1,6 @@
+/Users/proc/src/bittorrent-client/build/CMakeFiles/bittorrent.dir
+/Users/proc/src/bittorrent-client/build/CMakeFiles/bt-client.dir
+/Users/proc/src/bittorrent-client/build/CMakeFiles/bittorrent-tests.dir
+/Users/proc/src/bittorrent-client/build/CMakeFiles/test.dir
+/Users/proc/src/bittorrent-client/build/CMakeFiles/edit_cache.dir
+/Users/proc/src/bittorrent-client/build/CMakeFiles/rebuild_cache.dir

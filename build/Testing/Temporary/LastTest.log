@@ -1,0 +1,27 @@
+Start testing: Nov 05 18:12 PST
+----------------------------------------------------------
+1/1 Testing: bittorrent-tests
+1/1 Test: bittorrent-tests
+Command: "/Users/proc/src/bittorrent-client/build/bittorrent-tests"
+Directory: /Users/proc/src/bittorrent-client/build
+"bittorrent-tests" start time: Nov 05 18:12 PST
+Output:
+----------------------------------------------------------
+ok: session_handle is valid after construction
+ok: magnet: parsed info_hash is 20 bytes
+ok: to_hex produces 40 chars for 20 bytes
+ok: from_hex round-trips the bytes
+ok: from_hex output matches original bytes
+ok: add_torrent returns a valid handle
+ok: get_torrents returns the added torrent
+ok: find_torrent locates the added torrent
+All tests passed.
+<end of output>
+Test time =   0.74 sec
+----------------------------------------------------------
+Test Passed.
+"bittorrent-tests" end time: Nov 05 18:12 PST
+"bittorrent-tests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Nov 05 18:12 PST
