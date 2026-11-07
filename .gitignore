@@ -1,2 +1,4 @@
-build/bt-client
-*.o
+build/swarmbit
+*.torrent
+*.iso
+Prime*
