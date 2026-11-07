@@ -1,2 +1,0 @@
-/usr/bin/ar qc libbittorrent.a CMakeFiles/bittorrent.dir/src/session_manager.cpp.o CMakeFiles/bittorrent.dir/src/torrent_handle.cpp.o CMakeFiles/bittorrent.dir/src/alert_monitor.cpp.o
-/usr/bin/ranlib libbittorrent.a

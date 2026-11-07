@@ -127,50 +127,50 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named bittorrent
+# Target rules for targets named swarmbit
 
 # Build rule for target.
-bittorrent: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 bittorrent
-.PHONY : bittorrent
+swarmbit: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 swarmbit
+.PHONY : swarmbit
 
 # fast build rule for target.
-bittorrent/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bittorrent.dir/build.make CMakeFiles/bittorrent.dir/build
-.PHONY : bittorrent/fast
+swarmbit/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit.dir/build.make CMakeFiles/swarmbit.dir/build
+.PHONY : swarmbit/fast
 
 #=============================================================================
-# Target rules for targets named bt-client
+# Target rules for targets named swarmbit-cli
 
 # Build rule for target.
-bt-client: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 bt-client
-.PHONY : bt-client
+swarmbit-cli: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 swarmbit-cli
+.PHONY : swarmbit-cli
 
 # fast build rule for target.
-bt-client/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bt-client.dir/build.make CMakeFiles/bt-client.dir/build
-.PHONY : bt-client/fast
+swarmbit-cli/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit-cli.dir/build.make CMakeFiles/swarmbit-cli.dir/build
+.PHONY : swarmbit-cli/fast
 
 #=============================================================================
-# Target rules for targets named bittorrent-tests
+# Target rules for targets named swarmbit-tests
 
 # Build rule for target.
-bittorrent-tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 bittorrent-tests
-.PHONY : bittorrent-tests
+swarmbit-tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 swarmbit-tests
+.PHONY : swarmbit-tests
 
 # fast build rule for target.
-bittorrent-tests/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bittorrent-tests.dir/build.make CMakeFiles/bittorrent-tests.dir/build
-.PHONY : bittorrent-tests/fast
+swarmbit-tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit-tests.dir/build.make CMakeFiles/swarmbit-tests.dir/build
+.PHONY : swarmbit-tests/fast
 
 src/alert_monitor.o: src/alert_monitor.cpp.o
 .PHONY : src/alert_monitor.o
 
 # target to build an object file
 src/alert_monitor.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bittorrent.dir/build.make CMakeFiles/bittorrent.dir/src/alert_monitor.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit.dir/build.make CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o
 .PHONY : src/alert_monitor.cpp.o
 
 src/alert_monitor.i: src/alert_monitor.cpp.i
@@ -178,7 +178,7 @@ src/alert_monitor.i: src/alert_monitor.cpp.i
 
 # target to preprocess a source file
 src/alert_monitor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bittorrent.dir/build.make CMakeFiles/bittorrent.dir/src/alert_monitor.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit.dir/build.make CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.i
 .PHONY : src/alert_monitor.cpp.i
 
 src/alert_monitor.s: src/alert_monitor.cpp.s
@@ -186,7 +186,7 @@ src/alert_monitor.s: src/alert_monitor.cpp.s
 
 # target to generate assembly for a file
 src/alert_monitor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bittorrent.dir/build.make CMakeFiles/bittorrent.dir/src/alert_monitor.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit.dir/build.make CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.s
 .PHONY : src/alert_monitor.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -194,7 +194,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bt-client.dir/build.make CMakeFiles/bt-client.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit-cli.dir/build.make CMakeFiles/swarmbit-cli.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -202,7 +202,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bt-client.dir/build.make CMakeFiles/bt-client.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit-cli.dir/build.make CMakeFiles/swarmbit-cli.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -210,7 +210,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bt-client.dir/build.make CMakeFiles/bt-client.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit-cli.dir/build.make CMakeFiles/swarmbit-cli.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/session_manager.o: src/session_manager.cpp.o
@@ -218,7 +218,7 @@ src/session_manager.o: src/session_manager.cpp.o
 
 # target to build an object file
 src/session_manager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bittorrent.dir/build.make CMakeFiles/bittorrent.dir/src/session_manager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit.dir/build.make CMakeFiles/swarmbit.dir/src/session_manager.cpp.o
 .PHONY : src/session_manager.cpp.o
 
 src/session_manager.i: src/session_manager.cpp.i
@@ -226,7 +226,7 @@ src/session_manager.i: src/session_manager.cpp.i
 
 # target to preprocess a source file
 src/session_manager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bittorrent.dir/build.make CMakeFiles/bittorrent.dir/src/session_manager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit.dir/build.make CMakeFiles/swarmbit.dir/src/session_manager.cpp.i
 .PHONY : src/session_manager.cpp.i
 
 src/session_manager.s: src/session_manager.cpp.s
@@ -234,7 +234,7 @@ src/session_manager.s: src/session_manager.cpp.s
 
 # target to generate assembly for a file
 src/session_manager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bittorrent.dir/build.make CMakeFiles/bittorrent.dir/src/session_manager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit.dir/build.make CMakeFiles/swarmbit.dir/src/session_manager.cpp.s
 .PHONY : src/session_manager.cpp.s
 
 src/torrent_handle.o: src/torrent_handle.cpp.o
@@ -242,7 +242,7 @@ src/torrent_handle.o: src/torrent_handle.cpp.o
 
 # target to build an object file
 src/torrent_handle.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bittorrent.dir/build.make CMakeFiles/bittorrent.dir/src/torrent_handle.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit.dir/build.make CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o
 .PHONY : src/torrent_handle.cpp.o
 
 src/torrent_handle.i: src/torrent_handle.cpp.i
@@ -250,7 +250,7 @@ src/torrent_handle.i: src/torrent_handle.cpp.i
 
 # target to preprocess a source file
 src/torrent_handle.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bittorrent.dir/build.make CMakeFiles/bittorrent.dir/src/torrent_handle.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit.dir/build.make CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.i
 .PHONY : src/torrent_handle.cpp.i
 
 src/torrent_handle.s: src/torrent_handle.cpp.s
@@ -258,7 +258,7 @@ src/torrent_handle.s: src/torrent_handle.cpp.s
 
 # target to generate assembly for a file
 src/torrent_handle.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bittorrent.dir/build.make CMakeFiles/bittorrent.dir/src/torrent_handle.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit.dir/build.make CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.s
 .PHONY : src/torrent_handle.cpp.s
 
 tests/test_torrent.o: tests/test_torrent.cpp.o
@@ -266,7 +266,7 @@ tests/test_torrent.o: tests/test_torrent.cpp.o
 
 # target to build an object file
 tests/test_torrent.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bittorrent-tests.dir/build.make CMakeFiles/bittorrent-tests.dir/tests/test_torrent.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit-tests.dir/build.make CMakeFiles/swarmbit-tests.dir/tests/test_torrent.cpp.o
 .PHONY : tests/test_torrent.cpp.o
 
 tests/test_torrent.i: tests/test_torrent.cpp.i
@@ -274,7 +274,7 @@ tests/test_torrent.i: tests/test_torrent.cpp.i
 
 # target to preprocess a source file
 tests/test_torrent.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bittorrent-tests.dir/build.make CMakeFiles/bittorrent-tests.dir/tests/test_torrent.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit-tests.dir/build.make CMakeFiles/swarmbit-tests.dir/tests/test_torrent.cpp.i
 .PHONY : tests/test_torrent.cpp.i
 
 tests/test_torrent.s: tests/test_torrent.cpp.s
@@ -282,7 +282,7 @@ tests/test_torrent.s: tests/test_torrent.cpp.s
 
 # target to generate assembly for a file
 tests/test_torrent.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bittorrent-tests.dir/build.make CMakeFiles/bittorrent-tests.dir/tests/test_torrent.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit-tests.dir/build.make CMakeFiles/swarmbit-tests.dir/tests/test_torrent.cpp.s
 .PHONY : tests/test_torrent.cpp.s
 
 # Help Target
@@ -294,9 +294,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... bittorrent"
-	@echo "... bittorrent-tests"
-	@echo "... bt-client"
+	@echo "... swarmbit"
+	@echo "... swarmbit-cli"
+	@echo "... swarmbit-tests"
 	@echo "... src/alert_monitor.o"
 	@echo "... src/alert_monitor.i"
 	@echo "... src/alert_monitor.s"

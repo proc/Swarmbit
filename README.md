@@ -1,4 +1,4 @@
-# bittorrent-client
+# Swarmbit
 
 A command-line BitTorrent client written in C++17 on top of
 [libtorrent-rasterbar](https://libtorrent.org).
@@ -34,34 +34,34 @@ sudo apt-get install libtorrent-rasterbar-dev
 ## Build
 
 ```sh
-cd bittorrent-client
+cd swarmbit
 cmake -S . -B build
 cmake --build build
 ```
 
-This produces `build/bt-client` and `build/bittorrent-tests`.
+This produces `build/swarmbit` and `build/swarmbit-tests`.
 
 ## Usage
 
 ```sh
 # Add a torrent file or magnet link (saves into the current directory)
-./build/bt-client add path/to/file.torrent
-./build/bt-client add "magnet:?xt=urn:btih:..."
+./build/swarmbit add path/to/file.torrent
+./build/swarmbit add "magnet:?xt=urn:btih:..."
 
 # List active torrents
-./build/bt-client list
-./build/bt-client list --verbose
+./build/swarmbit list
+./build/swarmbit list --verbose
 
 # Show detailed status of one torrent
-./build/bt-client status <info-hash>
+./build/swarmbit status <info-hash>
 
 # Pause / resume / remove (use --files to delete downloaded data too)
-./build/bt-client pause <info-hash>
-./build/bt-client resume <info-hash>
-./build/bt-client remove <info-hash> [--files]
+./build/swarmbit pause <info-hash>
+./build/swarmbit resume <info-hash>
+./build/swarmbit remove <info-hash> [--files]
 
 # Show listening ports
-./build/bt-client ports
+./build/swarmbit ports
 ```
 
 Info-hashes may be given as 40-char hex, optionally prefixed with `btih:`.

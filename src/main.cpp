@@ -1,13 +1,13 @@
-// Command-line BitTorrent client built on libtorrent.
+// Command-line BitTorrent client built on libtorrent (Swarmbit).
 //
 // Usage:
-//   bt-client add <torrent-file|magnet-uri>
-//   bt-client list [--verbose]
-//   bt-client status <info-hash>
-//   bt-client remove <info-hash> [--files]
-//   bt-client pause <info-hash>
-//   bt-client resume <info-hash>
-//   bt-client ports
+//   swarmbit add <torrent-file|magnet-uri>
+//   swarmbit list [--verbose]
+//   swarmbit status <info-hash>
+//   swarmbit remove <info-hash> [--files]
+//   swarmbit pause <info-hash>
+//   swarmbit resume <info-hash>
+//   swarmbit ports
 //
 // The `add` command runs its event loop in the foreground; Ctrl-C performs a
 // clean shutdown (pauses torrents, tears down the session).
@@ -190,6 +190,10 @@ int main(int argc, char** argv) {
             const char* reset = "\033[0m";
             const char* green = "\033[32m";
             const char* dim = "\033[2m";
+            const char* cyan = "\033[36m";
+            const char* yellow = "\033[33m";
+            const char* magenta = "\033[35m";
+            const char* bold = "\033[1m";
 
             double pct = t->progress();
             if (pct > 1.0) pct = 1.0;
@@ -197,12 +201,12 @@ int main(int argc, char** argv) {
             std::string bar(filled, '#');
             bar.append(30 - filled, '.');
             std::cout << "\r  [" << green << bar << reset << "] "
+                      << bold << green
                       << std::fixed << std::setprecision(1)
-                      << (pct * 100.0) << "%  "
-                      << dim << "peers=" << t->num_peers() << "  "
-                      << "down=" << (t->download_rate() / 1024.0) << "KB/s  "
-                      << "up=" << (t->upload_rate() / 1024.0) << "KB/s"
-                      << reset;
+                      << (pct * 100.0) << "%" << reset << "  "
+                      << cyan << "peers=" << reset << t->num_peers() << "  "
+                      << yellow << "down=" << reset << (t->download_rate() / 1024.0) << "KB/s  "
+                      << magenta << "up=" << reset << (t->upload_rate() / 1024.0) << "KB/s";
             if (t->is_finished()) {
                 std::cout << "  " << green << "[done]" << reset;
             }

@@ -140,7 +140,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=bittorrent-client
+CMAKE_PROJECT_NAME:STATIC=swarmbit
 
 //Value Computed by CMake
 CMAKE_PROJECT_SPDX_LICENSE:STATIC=
@@ -228,15 +228,6 @@ PKG_CONFIG_ARGN:STRING=
 //pkg-config executable
 PKG_CONFIG_EXECUTABLE:FILEPATH=/Users/proc/homebrew/bin/pkg-config
 
-//Value Computed by CMake
-bittorrent-client_BINARY_DIR:STATIC=/Users/proc/src/bittorrent-client/build
-
-//Value Computed by CMake
-bittorrent-client_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-bittorrent-client_SOURCE_DIR:STATIC=/Users/proc/src/bittorrent-client
-
 //The directory containing a CMake configuration file for boost_headers.
 boost_headers_DIR:PATH=/opt/homebrew/lib/cmake/boost_headers-1.92.0
 
@@ -248,6 +239,15 @@ pkgcfg_lib__OPENSSL_crypto:FILEPATH=/Users/proc/homebrew/Cellar/openssl@4/4.1.0/
 
 //Path to a library.
 pkgcfg_lib__OPENSSL_ssl:FILEPATH=/Users/proc/homebrew/Cellar/openssl@4/4.1.0/lib/libssl.dylib
+
+//Value Computed by CMake
+swarmbit_BINARY_DIR:STATIC=/Users/proc/src/bittorrent-client/build
+
+//Value Computed by CMake
+swarmbit_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+swarmbit_SOURCE_DIR:STATIC=/Users/proc/src/bittorrent-client
 
 
 ########################

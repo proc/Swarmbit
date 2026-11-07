@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(bittorrent-client LANGUAGES CXX)
+project(swarmbit LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -26,21 +26,21 @@ else()
   message(FATAL_ERROR "Could not find a libtorrent-rasterbar imported target")
 endif()
 
-add_library(bittorrent STATIC
+add_library(swarmbit STATIC
   src/session_manager.cpp
   src/torrent_handle.cpp
   src/alert_monitor.cpp
 )
-target_include_directories(bittorrent PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
-target_link_libraries(bittorrent PUBLIC ${TORRENT_TARGET})
+target_include_directories(swarmbit PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
+target_link_libraries(swarmbit PUBLIC ${TORRENT_TARGET})
 
-add_executable(bt-client src/main.cpp)
-target_link_libraries(bt-client PRIVATE bittorrent)
+add_executable(swarmbit-cli src/main.cpp)
+target_link_libraries(swarmbit-cli PRIVATE swarmbit)
 
 enable_testing()
-add_executable(bittorrent-tests tests/test_torrent.cpp)
-target_link_libraries(bittorrent-tests PRIVATE bittorrent)
-add_test(NAME bittorrent-tests COMMAND bittorrent-tests)
+add_executable(swarmbit-tests tests/test_torrent.cpp)
+target_link_libraries(swarmbit-tests PRIVATE swarmbit)
+add_test(NAME swarmbit-tests COMMAND swarmbit-tests)
 
 # Boost is a dependency of libtorrent. Homebrew installs it at a standard
 # location; add it if not already on the include path.
@@ -48,12 +48,12 @@ find_path(BOOST_INCLUDE_DIR boost/config.hpp
   PATHS /opt/homebrew/opt/boost/include /usr/local/opt/boost/include
   NO_DEFAULT_PATH)
 if(BOOST_INCLUDE_DIR)
-  target_include_directories(bittorrent PUBLIC ${BOOST_INCLUDE_DIR})
+  target_include_directories(swarmbit PUBLIC ${BOOST_INCLUDE_DIR})
 endif()
 
 # libtorrent is built with SSL support; link OpenSSL.
 find_package(OpenSSL QUIET)
 if(OPENSSL_FOUND)
-  target_link_libraries(bittorrent PUBLIC OpenSSL::SSL OpenSSL::Crypto)
-  target_compile_definitions(bittorrent PUBLIC TORRENT_USE_SSL=1)
+  target_link_libraries(swarmbit PUBLIC OpenSSL::SSL OpenSSL::Crypto)
+  target_compile_definitions(swarmbit PUBLIC TORRENT_USE_SSL=1)
 endif()
