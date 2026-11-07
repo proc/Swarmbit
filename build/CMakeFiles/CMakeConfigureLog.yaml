@@ -26,7 +26,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/"
       - "/Users/proc/.rbenv/shims/"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
       - "/usr/bin/"
@@ -64,7 +64,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/uname"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/uname"
       - "/Users/proc/.rbenv/shims/uname"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/uname"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/uname"
       - "/usr/local/bin/uname"
       - "/System/Cryptexes/App/usr/bin/uname"
     found: "/usr/bin/uname"
@@ -152,7 +152,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/"
       - "/Users/proc/.rbenv/shims/"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
       - "/usr/bin/"
@@ -190,7 +190,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/gmake"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/gmake"
       - "/Users/proc/.rbenv/shims/gmake"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/gmake"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/gmake"
       - "/usr/local/bin/gmake"
       - "/System/Cryptexes/App/usr/bin/gmake"
       - "/usr/bin/gmake"
@@ -296,7 +296,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/"
       - "/Users/proc/.rbenv/shims/"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
       - "/usr/bin/"
@@ -334,7 +334,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/c++"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/c++"
       - "/Users/proc/.rbenv/shims/c++"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/c++"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/c++"
       - "/usr/local/bin/c++"
       - "/System/Cryptexes/App/usr/bin/c++"
     found: "/usr/bin/c++"
@@ -483,7 +483,7 @@ events:
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
       
       The CXX compiler identification is AppleClang, found in:
-        /Users/proc/src/bittorrent-client/build/CMakeFiles/4.4.5/CompilerIdCXX/a.out
+        /Users/proc/src/swarmbit/build/CMakeFiles/4.4.5/CompilerIdCXX/a.out
       
   -
     kind: "message-v1"
@@ -553,7 +553,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/"
       - "/Users/proc/.rbenv/shims/"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
       - "/bin/"
@@ -661,7 +661,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/"
       - "/Users/proc/.rbenv/shims/"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
       - "/bin/"
@@ -769,7 +769,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/"
       - "/Users/proc/.rbenv/shims/"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
       - "/bin/"
@@ -877,7 +877,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/"
       - "/Users/proc/.rbenv/shims/"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
       - "/bin/"
@@ -985,7 +985,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/"
       - "/Users/proc/.rbenv/shims/"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
       - "/bin/"
@@ -1093,7 +1093,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/"
       - "/Users/proc/.rbenv/shims/"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
       - "/bin/"
@@ -1201,7 +1201,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/"
       - "/Users/proc/.rbenv/shims/"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
       - "/bin/"
@@ -1239,7 +1239,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/objcopy"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/objcopy"
       - "/Users/proc/.rbenv/shims/objcopy"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/objcopy"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/objcopy"
       - "/usr/local/bin/objcopy"
       - "/System/Cryptexes/App/usr/bin/objcopy"
       - "/bin/objcopy"
@@ -1347,7 +1347,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/"
       - "/Users/proc/.rbenv/shims/"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
       - "/bin/"
@@ -1385,7 +1385,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/readelf"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/readelf"
       - "/Users/proc/.rbenv/shims/readelf"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/readelf"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/readelf"
       - "/usr/local/bin/readelf"
       - "/System/Cryptexes/App/usr/bin/readelf"
       - "/bin/readelf"
@@ -1493,7 +1493,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/"
       - "/Users/proc/.rbenv/shims/"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
       - "/bin/"
@@ -1531,7 +1531,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/dlltool"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/dlltool"
       - "/Users/proc/.rbenv/shims/dlltool"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/dlltool"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/dlltool"
       - "/usr/local/bin/dlltool"
       - "/System/Cryptexes/App/usr/bin/dlltool"
       - "/bin/dlltool"
@@ -1639,7 +1639,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/"
       - "/Users/proc/.rbenv/shims/"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
       - "/bin/"
@@ -1677,7 +1677,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/addr2line"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/addr2line"
       - "/Users/proc/.rbenv/shims/addr2line"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/addr2line"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/addr2line"
       - "/usr/local/bin/addr2line"
       - "/System/Cryptexes/App/usr/bin/addr2line"
       - "/bin/addr2line"
@@ -1785,7 +1785,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/"
       - "/Users/proc/.rbenv/shims/"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
       - "/bin/"
@@ -1823,7 +1823,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/tapi"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/tapi"
       - "/Users/proc/.rbenv/shims/tapi"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/tapi"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/tapi"
       - "/usr/local/bin/tapi"
       - "/System/Cryptexes/App/usr/bin/tapi"
       - "/bin/tapi"
@@ -1930,7 +1930,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/"
       - "/Users/proc/.rbenv/shims/"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
       - "/usr/bin/"
@@ -1968,7 +1968,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/install_name_tool"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/install_name_tool"
       - "/Users/proc/.rbenv/shims/install_name_tool"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/install_name_tool"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/install_name_tool"
       - "/usr/local/bin/install_name_tool"
       - "/System/Cryptexes/App/usr/bin/install_name_tool"
     found: "/usr/bin/install_name_tool"
@@ -2032,8 +2032,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/Users/proc/src/bittorrent-client/build/CMakeFiles/CMakeScratch/TryCompile-Zhw8Nb"
-      binary: "/Users/proc/src/bittorrent-client/build/CMakeFiles/CMakeScratch/TryCompile-Zhw8Nb"
+      source: "/Users/proc/src/swarmbit/build/CMakeFiles/CMakeScratch/TryCompile-X4XWel"
+      binary: "/Users/proc/src/swarmbit/build/CMakeFiles/CMakeScratch/TryCompile-X4XWel"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -2047,20 +2047,20 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: false
       stdout: |
-        Change Dir: '/Users/proc/src/bittorrent-client/build/CMakeFiles/CMakeScratch/TryCompile-Zhw8Nb'
+        Change Dir: '/Users/proc/src/swarmbit/build/CMakeFiles/CMakeScratch/TryCompile-X4XWel'
         
-        Run Build Command(s): /Users/proc/homebrew/bin/cmake -E env VERBOSE=1 /Users/proc/homebrew/bin/gmake -f Makefile cmTC_07a62/fast
-        /Users/proc/homebrew/bin/gmake  -f CMakeFiles/cmTC_07a62.dir/build.make CMakeFiles/cmTC_07a62.dir/build
-        gmake[1]: Entering directory '/Users/proc/src/bittorrent-client/build/CMakeFiles/CMakeScratch/TryCompile-Zhw8Nb'
-        Building CXX object CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o
-        /usr/bin/c++   -v -Wl,-v -MD -MT CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o -c /Users/proc/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /Users/proc/homebrew/bin/cmake -E env VERBOSE=1 /Users/proc/homebrew/bin/gmake -f Makefile cmTC_cc578/fast
+        /Users/proc/homebrew/bin/gmake  -f CMakeFiles/cmTC_cc578.dir/build.make CMakeFiles/cmTC_cc578.dir/build
+        gmake[1]: Entering directory '/Users/proc/src/swarmbit/build/CMakeFiles/CMakeScratch/TryCompile-X4XWel'
+        Building CXX object CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o
+        /usr/bin/c++   -v -Wl,-v -MD -MT CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o -c /Users/proc/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp
         Apple clang version 21.0.0 (clang-2100.4.1.1)
         Target: arm64-apple-darwin27.2.0
         Thread model: posix
         InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
         clang++: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
         ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"
-         "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple arm64-apple-macosx27.2.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -fno-sized-deallocation -target-sdk-version=27.2 -fdepfile-entry=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/SDKSettings.json -fvisibility-inlines-hidden-static-local-var -fno-modulemap-allow-subdirectory-search -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -enable-tlsdesc -target-cpu apple-m1 -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +ccpp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +flagm -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/proc/src/bittorrent-client/build/CMakeFiles/CMakeScratch/TryCompile-Zhw8Nb -target-linker-version 27033.1 -v -fcoverage-compilation-dir=/Users/proc/src/bittorrent-client/build/CMakeFiles/CMakeScratch/TryCompile-Zhw8Nb -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21 -dependency-file CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1 -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks -Wno-elaborated-enum-base -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -Wno-error=allocator-wrappers -fdwarf2-cfi-asm -o CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o -x c++ /Users/proc/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+         "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple arm64-apple-macosx27.2.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -fno-sized-deallocation -target-sdk-version=27.2 -fdepfile-entry=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/SDKSettings.json -fvisibility-inlines-hidden-static-local-var -fno-modulemap-allow-subdirectory-search -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -enable-tlsdesc -target-cpu apple-m1 -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +ccpp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +flagm -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/proc/src/swarmbit/build/CMakeFiles/CMakeScratch/TryCompile-X4XWel -target-linker-version 27033.1 -v -fcoverage-compilation-dir=/Users/proc/src/swarmbit/build/CMakeFiles/CMakeScratch/TryCompile-X4XWel -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21 -dependency-file CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1 -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks -Wno-elaborated-enum-base -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -Wno-error=allocator-wrappers -fdwarf2-cfi-asm -o CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o -x c++ /Users/proc/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp
         clang -cc1 version 21.0.0 (clang-2100.4.1.1) default target arm64-apple-darwin27.2.0
         ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include"
         ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks"
@@ -2074,13 +2074,13 @@ events:
          /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)
          /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks (framework directory)
         End of search list.
-        Linking CXX executable cmTC_07a62
-        /Users/proc/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_07a62.dir/link.txt --verbose=1
+        Linking CXX executable cmTC_cc578
+        /Users/proc/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cc578.dir/link.txt --verbose=1
         Apple clang version 21.0.0 (clang-2100.4.1.1)
         Target: arm64-apple-darwin27.2.0
         Thread model: posix
         InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
-         "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 27.2.0 27.2 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_07a62 -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/lib/darwin/libclang_rt.osx.a
+         "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 27.2.0 27.2 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_cc578 -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/lib/darwin/libclang_rt.osx.a
         @(#)PROGRAM:ld PROJECT:ld-27106.1
         BUILD 19:06:34 Oct 19 2026
         configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em armv8m.main armv8.1m.main
@@ -2092,8 +2092,8 @@ events:
         	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/swift
         Framework search paths:
         	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks
-        /usr/bin/c++ -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_07a62
-        gmake[1]: Leaving directory '/Users/proc/src/bittorrent-client/build/CMakeFiles/CMakeScratch/TryCompile-Zhw8Nb'
+        /usr/bin/c++ -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_cc578
+        gmake[1]: Leaving directory '/Users/proc/src/swarmbit/build/CMakeFiles/CMakeScratch/TryCompile-X4XWel'
         
       exitCode: 0
   -
@@ -2139,20 +2139,20 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/Users/proc/src/bittorrent-client/build/CMakeFiles/CMakeScratch/TryCompile-Zhw8Nb']
+        ignore line: [Change Dir: '/Users/proc/src/swarmbit/build/CMakeFiles/CMakeScratch/TryCompile-X4XWel']
         ignore line: []
-        ignore line: [Run Build Command(s): /Users/proc/homebrew/bin/cmake -E env VERBOSE=1 /Users/proc/homebrew/bin/gmake -f Makefile cmTC_07a62/fast]
-        ignore line: [/Users/proc/homebrew/bin/gmake  -f CMakeFiles/cmTC_07a62.dir/build.make CMakeFiles/cmTC_07a62.dir/build]
-        ignore line: [gmake[1]: Entering directory '/Users/proc/src/bittorrent-client/build/CMakeFiles/CMakeScratch/TryCompile-Zhw8Nb']
-        ignore line: [Building CXX object CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o]
-        ignore line: [/usr/bin/c++   -v -Wl -v -MD -MT CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o -c /Users/proc/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /Users/proc/homebrew/bin/cmake -E env VERBOSE=1 /Users/proc/homebrew/bin/gmake -f Makefile cmTC_cc578/fast]
+        ignore line: [/Users/proc/homebrew/bin/gmake  -f CMakeFiles/cmTC_cc578.dir/build.make CMakeFiles/cmTC_cc578.dir/build]
+        ignore line: [gmake[1]: Entering directory '/Users/proc/src/swarmbit/build/CMakeFiles/CMakeScratch/TryCompile-X4XWel']
+        ignore line: [Building CXX object CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/usr/bin/c++   -v -Wl -v -MD -MT CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o -c /Users/proc/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Apple clang version 21.0.0 (clang-2100.4.1.1)]
         ignore line: [Target: arm64-apple-darwin27.2.0]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
         ignore line: [clang++: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
         ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"]
-        ignore line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple arm64-apple-macosx27.2.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -fno-sized-deallocation -target-sdk-version=27.2 -fdepfile-entry=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/SDKSettings.json -fvisibility-inlines-hidden-static-local-var -fno-modulemap-allow-subdirectory-search -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -enable-tlsdesc -target-cpu apple-m1 -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +ccpp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +flagm -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/proc/src/bittorrent-client/build/CMakeFiles/CMakeScratch/TryCompile-Zhw8Nb -target-linker-version 27033.1 -v -fcoverage-compilation-dir=/Users/proc/src/bittorrent-client/build/CMakeFiles/CMakeScratch/TryCompile-Zhw8Nb -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21 -dependency-file CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1 -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks -Wno-elaborated-enum-base -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -Wno-error=allocator-wrappers -fdwarf2-cfi-asm -o CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o -x c++ /Users/proc/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple arm64-apple-macosx27.2.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -fno-sized-deallocation -target-sdk-version=27.2 -fdepfile-entry=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/SDKSettings.json -fvisibility-inlines-hidden-static-local-var -fno-modulemap-allow-subdirectory-search -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -enable-tlsdesc -target-cpu apple-m1 -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +ccpp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +flagm -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/proc/src/swarmbit/build/CMakeFiles/CMakeScratch/TryCompile-X4XWel -target-linker-version 27033.1 -v -fcoverage-compilation-dir=/Users/proc/src/swarmbit/build/CMakeFiles/CMakeScratch/TryCompile-X4XWel -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21 -dependency-file CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1 -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks -Wno-elaborated-enum-base -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -Wno-error=allocator-wrappers -fdwarf2-cfi-asm -o CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o -x c++ /Users/proc/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [clang -cc1 version 21.0.0 (clang-2100.4.1.1) default target arm64-apple-darwin27.2.0]
         ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include"]
         ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks"]
@@ -2166,14 +2166,14 @@ events:
         ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)]
         ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks (framework directory)]
         ignore line: [End of search list.]
-        ignore line: [Linking CXX executable cmTC_07a62]
-        ignore line: [/Users/proc/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_07a62.dir/link.txt --verbose=1]
+        ignore line: [Linking CXX executable cmTC_cc578]
+        ignore line: [/Users/proc/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cc578.dir/link.txt --verbose=1]
         ignore line: [Apple clang version 21.0.0 (clang-2100.4.1.1)]
         ignore line: [Target: arm64-apple-darwin27.2.0]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
-        link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 27.2.0 27.2 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_07a62 -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/lib/darwin/libclang_rt.osx.a] ==> linker [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld]
-        link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 27.2.0 27.2 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_07a62 -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/lib/darwin/libclang_rt.osx.a]
+        link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 27.2.0 27.2 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_cc578 -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/lib/darwin/libclang_rt.osx.a] ==> linker [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld]
+        link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 27.2.0 27.2 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_cc578 -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/lib/darwin/libclang_rt.osx.a]
           arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
           arg [-demangle] ==> ignore
           arg [-lto_library] ==> ignore, skip following value
@@ -2190,12 +2190,12 @@ events:
           arg [-mllvm] ==> ignore
           arg [-enable-linkonceodr-outlining] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_07a62] ==> ignore
+          arg [cmTC_cc578] ==> ignore
           arg [-L/usr/local/lib] ==> dir [/usr/local/lib]
           arg [-search_paths_first] ==> ignore
           arg [-headerpad_max_install_names] ==> ignore
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_07a62.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [CMakeFiles/cmTC_cc578.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
           arg [-lc++] ==> lib [c++]
           arg [-lSystem] ==> lib [System]
           arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/21/lib/darwin/libclang_rt.osx.a]
@@ -2241,8 +2241,8 @@ events:
       - "/opt/homebrew/lib/cmake/LibtorrentRasterbar/LibtorrentRasterbarConfig.cmake:14 (find_dependency)"
       - "CMakeLists.txt:15 (find_package)"
     directories:
-      source: "/Users/proc/src/bittorrent-client/build/CMakeFiles/CMakeScratch/TryCompile-CCRXgu"
-      binary: "/Users/proc/src/bittorrent-client/build/CMakeFiles/CMakeScratch/TryCompile-CCRXgu"
+      source: "/Users/proc/src/swarmbit/build/CMakeFiles/CMakeScratch/TryCompile-wp3XrO"
+      binary: "/Users/proc/src/swarmbit/build/CMakeFiles/CMakeScratch/TryCompile-wp3XrO"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -2255,17 +2255,17 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: '/Users/proc/src/bittorrent-client/build/CMakeFiles/CMakeScratch/TryCompile-CCRXgu'
+        Change Dir: '/Users/proc/src/swarmbit/build/CMakeFiles/CMakeScratch/TryCompile-wp3XrO'
         
-        Run Build Command(s): /Users/proc/homebrew/bin/cmake -E env VERBOSE=1 /Users/proc/homebrew/bin/gmake -f Makefile cmTC_5265f/fast
-        /Users/proc/homebrew/bin/gmake  -f CMakeFiles/cmTC_5265f.dir/build.make CMakeFiles/cmTC_5265f.dir/build
-        gmake[1]: Entering directory '/Users/proc/src/bittorrent-client/build/CMakeFiles/CMakeScratch/TryCompile-CCRXgu'
-        Building CXX object CMakeFiles/cmTC_5265f.dir/src.cxx.o
-        /usr/bin/c++ -DCMAKE_HAVE_LIBC_PTHREAD  -std=c++17 -MD -MT CMakeFiles/cmTC_5265f.dir/src.cxx.o -MF CMakeFiles/cmTC_5265f.dir/src.cxx.o.d -o CMakeFiles/cmTC_5265f.dir/src.cxx.o -c /Users/proc/src/bittorrent-client/build/CMakeFiles/CMakeScratch/TryCompile-CCRXgu/src.cxx
-        Linking CXX executable cmTC_5265f
-        /Users/proc/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5265f.dir/link.txt --verbose=1
-        /usr/bin/c++ -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_5265f.dir/src.cxx.o -o cmTC_5265f
-        gmake[1]: Leaving directory '/Users/proc/src/bittorrent-client/build/CMakeFiles/CMakeScratch/TryCompile-CCRXgu'
+        Run Build Command(s): /Users/proc/homebrew/bin/cmake -E env VERBOSE=1 /Users/proc/homebrew/bin/gmake -f Makefile cmTC_cb19a/fast
+        /Users/proc/homebrew/bin/gmake  -f CMakeFiles/cmTC_cb19a.dir/build.make CMakeFiles/cmTC_cb19a.dir/build
+        gmake[1]: Entering directory '/Users/proc/src/swarmbit/build/CMakeFiles/CMakeScratch/TryCompile-wp3XrO'
+        Building CXX object CMakeFiles/cmTC_cb19a.dir/src.cxx.o
+        /usr/bin/c++ -DCMAKE_HAVE_LIBC_PTHREAD  -std=c++17 -MD -MT CMakeFiles/cmTC_cb19a.dir/src.cxx.o -MF CMakeFiles/cmTC_cb19a.dir/src.cxx.o.d -o CMakeFiles/cmTC_cb19a.dir/src.cxx.o -c /Users/proc/src/swarmbit/build/CMakeFiles/CMakeScratch/TryCompile-wp3XrO/src.cxx
+        Linking CXX executable cmTC_cb19a
+        /Users/proc/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cb19a.dir/link.txt --verbose=1
+        /usr/bin/c++ -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/cmTC_cb19a.dir/src.cxx.o -o cmTC_cb19a
+        gmake[1]: Leaving directory '/Users/proc/src/swarmbit/build/CMakeFiles/CMakeScratch/TryCompile-wp3XrO'
         
       exitCode: 0
   -
@@ -2298,7 +2298,7 @@ events:
       - "/Users/proc/homebrew/opt/asdf/libexec/bin/"
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/"
       - "/Users/proc/.rbenv/shims/"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
       - "/usr/bin/"
@@ -2377,8 +2377,8 @@ events:
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/pkgconf"
       - "/Users/proc/.rbenv/shims/pkg-config"
       - "/Users/proc/.rbenv/shims/pkgconf"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/pkg-config"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/pkgconf"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/pkg-config"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/pkgconf"
       - "/usr/local/bin/pkg-config"
       - "/usr/local/bin/pkgconf"
       - "/System/Cryptexes/App/usr/bin/pkg-config"
@@ -2736,8 +2736,8 @@ events:
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/"
       - "/Users/proc/.rbenv/shims/include/"
       - "/Users/proc/.rbenv/shims/"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/include/"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/include/"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/"
       - "/usr/local/bin/include/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/include/"
@@ -2875,8 +2875,8 @@ events:
       - "/Users/proc/homebrew/Caskroom/miniforge/base/bin/openssl.framework/Headers/ssl.h"
       - "/Users/proc/.rbenv/shims/include/openssl.framework/Headers/ssl.h"
       - "/Users/proc/.rbenv/shims/openssl.framework/Headers/ssl.h"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/include/openssl.framework/Headers/ssl.h"
-      - "/Users/proc/src/bittorrent-client/node_modules/.bin/openssl.framework/Headers/ssl.h"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/include/openssl.framework/Headers/ssl.h"
+      - "/Users/proc/src/swarmbit/node_modules/.bin/openssl.framework/Headers/ssl.h"
       - "/usr/local/bin/include/openssl.framework/Headers/ssl.h"
       - "/usr/local/bin/openssl.framework/Headers/ssl.h"
       - "/System/Cryptexes/App/usr/bin/include/openssl.framework/Headers/ssl.h"
@@ -3436,23 +3436,23 @@ events:
         CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
     candidates:
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/boost_headersConfig.cmake"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/boost_headersConfig.cmake"
         mode: "config"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/boost_headers-config.cmake"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/boost_headers-config.cmake"
         mode: "config"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/lib64/cps/boost_headers.cps"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/lib64/cps/boost_headers.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/lib/cps/boost_headers.cps"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/lib/cps/boost_headers.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/share/cps/boost_headers.cps"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/share/cps/boost_headers.cps"
         mode: "cps"
         reason: "no_exist"
       -
@@ -3591,35 +3591,35 @@ events:
         CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
     candidates:
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/BoostConfig.cmake"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/BoostConfig.cmake"
         mode: "config"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/boost-config.cmake"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/boost-config.cmake"
         mode: "config"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/lib64/cps/Boost.cps"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/lib64/cps/Boost.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/lib64/cps/boost.cps"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/lib64/cps/boost.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/lib/cps/Boost.cps"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/lib/cps/Boost.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/lib/cps/boost.cps"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/lib/cps/boost.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/share/cps/Boost.cps"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/share/cps/Boost.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/share/cps/boost.cps"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/share/cps/boost.cps"
         mode: "cps"
         reason: "no_exist"
       -
@@ -4695,35 +4695,35 @@ events:
         CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
     candidates:
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/LibtorrentRasterbarConfig.cmake"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/LibtorrentRasterbarConfig.cmake"
         mode: "config"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/libtorrentrasterbar-config.cmake"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/libtorrentrasterbar-config.cmake"
         mode: "config"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/lib64/cps/LibtorrentRasterbar.cps"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/lib64/cps/LibtorrentRasterbar.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/lib64/cps/libtorrentrasterbar.cps"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/lib64/cps/libtorrentrasterbar.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/lib/cps/LibtorrentRasterbar.cps"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/lib/cps/LibtorrentRasterbar.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/lib/cps/libtorrentrasterbar.cps"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/lib/cps/libtorrentrasterbar.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/share/cps/LibtorrentRasterbar.cps"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/share/cps/LibtorrentRasterbar.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/share/cps/libtorrentrasterbar.cps"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/share/cps/libtorrentrasterbar.cps"
         mode: "cps"
         reason: "no_exist"
       -
@@ -5291,23 +5291,23 @@ events:
         CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
     candidates:
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/libtorrent-rasterbarConfig.cmake"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/libtorrent-rasterbarConfig.cmake"
         mode: "config"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/libtorrent-rasterbar-config.cmake"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/libtorrent-rasterbar-config.cmake"
         mode: "config"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/lib64/cps/libtorrent-rasterbar.cps"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/lib64/cps/libtorrent-rasterbar.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/lib/cps/libtorrent-rasterbar.cps"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/lib/cps/libtorrent-rasterbar.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "/Users/proc/src/bittorrent-client/build/CMakeFiles/pkgRedirects/share/cps/libtorrent-rasterbar.cps"
+        path: "/Users/proc/src/swarmbit/build/CMakeFiles/pkgRedirects/share/cps/libtorrent-rasterbar.cps"
         mode: "cps"
         reason: "no_exist"
       -

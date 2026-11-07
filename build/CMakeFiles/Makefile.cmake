@@ -105,7 +105,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/Users/proc/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake"
   "/Users/proc/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake"
   "/Users/proc/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake"
-  "/Users/proc/src/bittorrent-client/CMakeLists.txt"
+  "/Users/proc/src/swarmbit/CMakeLists.txt"
   "CMakeFiles/4.4.5/CMakeCXXCompiler.cmake"
   "CMakeFiles/4.4.5/CMakeSystem.cmake"
   "/opt/homebrew/lib/cmake/Boost-1.92.0/BoostConfig.cmake"

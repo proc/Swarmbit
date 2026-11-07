@@ -1,8 +1,8 @@
 CMakeFiles/swarmbit-cli.dir/src/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/SDKSettings.json \
-  /Users/proc/src/bittorrent-client/src/main.cpp \
-  /Users/proc/src/bittorrent-client/src/alert_monitor.hpp \
-  /Users/proc/src/bittorrent-client/src/session_manager.hpp \
+  /Users/proc/src/swarmbit/src/main.cpp \
+  /Users/proc/src/swarmbit/src/alert_monitor.hpp \
+  /Users/proc/src/swarmbit/src/session_manager.hpp \
   /opt/homebrew/include/libtorrent/session.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/thread \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
@@ -2118,5 +2118,5 @@ CMakeFiles/swarmbit-cli.dir/src/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__stop_token/atomic_unique_lock.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__stop_token/intrusive_list_view.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__stop_token/stop_token.h \
-  /Users/proc/src/bittorrent-client/src/torrent_handle.hpp \
+  /Users/proc/src/swarmbit/src/torrent_handle.hpp \
   /opt/homebrew/include/libtorrent/hex.hpp

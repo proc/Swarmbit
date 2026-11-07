@@ -1,10 +1,10 @@
-Start testing: Nov 06 17:45 PST
+Start testing: Nov 06 20:27 PST
 ----------------------------------------------------------
 1/1 Testing: swarmbit-tests
 1/1 Test: swarmbit-tests
-Command: "/Users/proc/src/bittorrent-client/build/swarmbit-tests"
-Directory: /Users/proc/src/bittorrent-client/build
-"swarmbit-tests" start time: Nov 06 17:45 PST
+Command: "/Users/proc/src/swarmbit/build/swarmbit-tests"
+Directory: /Users/proc/src/swarmbit/build
+"swarmbit-tests" start time: Nov 06 20:27 PST
 Output:
 ----------------------------------------------------------
 ok: session_handle is valid after construction
@@ -17,11 +17,11 @@ ok: get_torrents returns the added torrent
 ok: find_torrent locates the added torrent
 All tests passed.
 <end of output>
-Test time =   0.86 sec
+Test time =   4.04 sec
 ----------------------------------------------------------
 Test Passed.
-"swarmbit-tests" end time: Nov 06 17:45 PST
-"swarmbit-tests" time elapsed: 00:00:00
+"swarmbit-tests" end time: Nov 06 20:27 PST
+"swarmbit-tests" time elapsed: 00:00:04
 ----------------------------------------------------------
 
-End testing: Nov 06 17:45 PST
+End testing: Nov 06 20:27 PST

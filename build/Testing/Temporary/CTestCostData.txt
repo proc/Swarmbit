@@ -1,2 +1,2 @@
-swarmbit-tests 1 0.862936
+swarmbit-tests 2 2.02143
 ---

@@ -54,10 +54,10 @@ RM = /Users/proc/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/proc/src/bittorrent-client
+CMAKE_SOURCE_DIR = /Users/proc/src/swarmbit
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/proc/src/bittorrent-client/build
+CMAKE_BINARY_DIR = /Users/proc/src/swarmbit/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -91,14 +91,14 @@ clean: CMakeFiles/swarmbit-tests.dir/clean
 CMakeFiles/swarmbit.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit.dir/build.make CMakeFiles/swarmbit.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit.dir/build.make CMakeFiles/swarmbit.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/proc/src/bittorrent-client/build/CMakeFiles --progress-num=1,2,3,4 "Built target swarmbit"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/proc/src/swarmbit/build/CMakeFiles --progress-num=1,2,3,4 "Built target swarmbit"
 .PHONY : CMakeFiles/swarmbit.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/swarmbit.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/proc/src/bittorrent-client/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/proc/src/swarmbit/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/swarmbit.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/proc/src/bittorrent-client/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/proc/src/swarmbit/build/CMakeFiles 0
 .PHONY : CMakeFiles/swarmbit.dir/rule
 
 # Convenience name for target.
@@ -108,7 +108,7 @@ swarmbit: CMakeFiles/swarmbit.dir/rule
 # codegen rule for target.
 CMakeFiles/swarmbit.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit.dir/build.make CMakeFiles/swarmbit.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/proc/src/bittorrent-client/build/CMakeFiles --progress-num=1,2,3,4 "Finished codegen for target swarmbit"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/proc/src/swarmbit/build/CMakeFiles --progress-num=1,2,3,4 "Finished codegen for target swarmbit"
 .PHONY : CMakeFiles/swarmbit.dir/codegen
 
 # clean rule for target.
@@ -123,14 +123,14 @@ CMakeFiles/swarmbit.dir/clean:
 CMakeFiles/swarmbit-cli.dir/all: CMakeFiles/swarmbit.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit-cli.dir/build.make CMakeFiles/swarmbit-cli.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit-cli.dir/build.make CMakeFiles/swarmbit-cli.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/proc/src/bittorrent-client/build/CMakeFiles --progress-num=5,6 "Built target swarmbit-cli"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/proc/src/swarmbit/build/CMakeFiles --progress-num=5,6 "Built target swarmbit-cli"
 .PHONY : CMakeFiles/swarmbit-cli.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/swarmbit-cli.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/proc/src/bittorrent-client/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/proc/src/swarmbit/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/swarmbit-cli.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/proc/src/bittorrent-client/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/proc/src/swarmbit/build/CMakeFiles 0
 .PHONY : CMakeFiles/swarmbit-cli.dir/rule
 
 # Convenience name for target.
@@ -140,7 +140,7 @@ swarmbit-cli: CMakeFiles/swarmbit-cli.dir/rule
 # codegen rule for target.
 CMakeFiles/swarmbit-cli.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit-cli.dir/build.make CMakeFiles/swarmbit-cli.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/proc/src/bittorrent-client/build/CMakeFiles --progress-num=5,6 "Finished codegen for target swarmbit-cli"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/proc/src/swarmbit/build/CMakeFiles --progress-num=5,6 "Finished codegen for target swarmbit-cli"
 .PHONY : CMakeFiles/swarmbit-cli.dir/codegen
 
 # clean rule for target.
@@ -155,14 +155,14 @@ CMakeFiles/swarmbit-cli.dir/clean:
 CMakeFiles/swarmbit-tests.dir/all: CMakeFiles/swarmbit.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit-tests.dir/build.make CMakeFiles/swarmbit-tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit-tests.dir/build.make CMakeFiles/swarmbit-tests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/proc/src/bittorrent-client/build/CMakeFiles --progress-num=7,8 "Built target swarmbit-tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/proc/src/swarmbit/build/CMakeFiles --progress-num=7,8 "Built target swarmbit-tests"
 .PHONY : CMakeFiles/swarmbit-tests.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/swarmbit-tests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/proc/src/bittorrent-client/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/proc/src/swarmbit/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/swarmbit-tests.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/proc/src/bittorrent-client/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/proc/src/swarmbit/build/CMakeFiles 0
 .PHONY : CMakeFiles/swarmbit-tests.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ swarmbit-tests: CMakeFiles/swarmbit-tests.dir/rule
 # codegen rule for target.
 CMakeFiles/swarmbit-tests.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/swarmbit-tests.dir/build.make CMakeFiles/swarmbit-tests.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/proc/src/bittorrent-client/build/CMakeFiles --progress-num=7,8 "Finished codegen for target swarmbit-tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/proc/src/swarmbit/build/CMakeFiles --progress-num=7,8 "Finished codegen for target swarmbit-tests"
 .PHONY : CMakeFiles/swarmbit-tests.dir/codegen
 
 # clean rule for target.

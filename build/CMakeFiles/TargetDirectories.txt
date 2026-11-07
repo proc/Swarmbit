@@ -1,6 +1,6 @@
-/Users/proc/src/bittorrent-client/build/CMakeFiles/swarmbit.dir
-/Users/proc/src/bittorrent-client/build/CMakeFiles/swarmbit-cli.dir
-/Users/proc/src/bittorrent-client/build/CMakeFiles/swarmbit-tests.dir
-/Users/proc/src/bittorrent-client/build/CMakeFiles/test.dir
-/Users/proc/src/bittorrent-client/build/CMakeFiles/edit_cache.dir
-/Users/proc/src/bittorrent-client/build/CMakeFiles/rebuild_cache.dir
+/Users/proc/src/swarmbit/build/CMakeFiles/swarmbit.dir
+/Users/proc/src/swarmbit/build/CMakeFiles/swarmbit-cli.dir
+/Users/proc/src/swarmbit/build/CMakeFiles/swarmbit-tests.dir
+/Users/proc/src/swarmbit/build/CMakeFiles/test.dir
+/Users/proc/src/swarmbit/build/CMakeFiles/edit_cache.dir
+/Users/proc/src/swarmbit/build/CMakeFiles/rebuild_cache.dir

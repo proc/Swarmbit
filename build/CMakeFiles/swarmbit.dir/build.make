@@ -53,10 +53,10 @@ RM = /Users/proc/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/proc/src/bittorrent-client
+CMAKE_SOURCE_DIR = /Users/proc/src/swarmbit
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/proc/src/bittorrent-client/build
+CMAKE_BINARY_DIR = /Users/proc/src/swarmbit/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/swarmbit.dir/depend.make
@@ -73,46 +73,46 @@ CMakeFiles/swarmbit.dir/codegen:
 .PHONY : CMakeFiles/swarmbit.dir/codegen
 
 CMakeFiles/swarmbit.dir/src/session_manager.cpp.o: CMakeFiles/swarmbit.dir/flags.make
-CMakeFiles/swarmbit.dir/src/session_manager.cpp.o: /Users/proc/src/bittorrent-client/src/session_manager.cpp
+CMakeFiles/swarmbit.dir/src/session_manager.cpp.o: /Users/proc/src/swarmbit/src/session_manager.cpp
 CMakeFiles/swarmbit.dir/src/session_manager.cpp.o: CMakeFiles/swarmbit.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/proc/src/bittorrent-client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/swarmbit.dir/src/session_manager.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/swarmbit.dir/src/session_manager.cpp.o -MF CMakeFiles/swarmbit.dir/src/session_manager.cpp.o.d -o CMakeFiles/swarmbit.dir/src/session_manager.cpp.o -c /Users/proc/src/bittorrent-client/src/session_manager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/proc/src/swarmbit/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/swarmbit.dir/src/session_manager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/swarmbit.dir/src/session_manager.cpp.o -MF CMakeFiles/swarmbit.dir/src/session_manager.cpp.o.d -o CMakeFiles/swarmbit.dir/src/session_manager.cpp.o -c /Users/proc/src/swarmbit/src/session_manager.cpp
 
 CMakeFiles/swarmbit.dir/src/session_manager.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/swarmbit.dir/src/session_manager.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/proc/src/bittorrent-client/src/session_manager.cpp > CMakeFiles/swarmbit.dir/src/session_manager.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/proc/src/swarmbit/src/session_manager.cpp > CMakeFiles/swarmbit.dir/src/session_manager.cpp.i
 
 CMakeFiles/swarmbit.dir/src/session_manager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/swarmbit.dir/src/session_manager.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/proc/src/bittorrent-client/src/session_manager.cpp -o CMakeFiles/swarmbit.dir/src/session_manager.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/proc/src/swarmbit/src/session_manager.cpp -o CMakeFiles/swarmbit.dir/src/session_manager.cpp.s
 
 CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o: CMakeFiles/swarmbit.dir/flags.make
-CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o: /Users/proc/src/bittorrent-client/src/torrent_handle.cpp
+CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o: /Users/proc/src/swarmbit/src/torrent_handle.cpp
 CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o: CMakeFiles/swarmbit.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/proc/src/bittorrent-client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o -MF CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o.d -o CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o -c /Users/proc/src/bittorrent-client/src/torrent_handle.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/proc/src/swarmbit/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o -MF CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o.d -o CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o -c /Users/proc/src/swarmbit/src/torrent_handle.cpp
 
 CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/proc/src/bittorrent-client/src/torrent_handle.cpp > CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/proc/src/swarmbit/src/torrent_handle.cpp > CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.i
 
 CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/proc/src/bittorrent-client/src/torrent_handle.cpp -o CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/proc/src/swarmbit/src/torrent_handle.cpp -o CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.s
 
 CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o: CMakeFiles/swarmbit.dir/flags.make
-CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o: /Users/proc/src/bittorrent-client/src/alert_monitor.cpp
+CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o: /Users/proc/src/swarmbit/src/alert_monitor.cpp
 CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o: CMakeFiles/swarmbit.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/proc/src/bittorrent-client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o -MF CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o.d -o CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o -c /Users/proc/src/bittorrent-client/src/alert_monitor.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/proc/src/swarmbit/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o -MF CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o.d -o CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o -c /Users/proc/src/swarmbit/src/alert_monitor.cpp
 
 CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/proc/src/bittorrent-client/src/alert_monitor.cpp > CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/proc/src/swarmbit/src/alert_monitor.cpp > CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.i
 
 CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/proc/src/bittorrent-client/src/alert_monitor.cpp -o CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/proc/src/swarmbit/src/alert_monitor.cpp -o CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.s
 
 # Object files for target swarmbit
 swarmbit_OBJECTS = \
@@ -128,7 +128,7 @@ libswarmbit.a: CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o
 libswarmbit.a: CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o
 libswarmbit.a: CMakeFiles/swarmbit.dir/build.make
 libswarmbit.a: CMakeFiles/swarmbit.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/proc/src/bittorrent-client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libswarmbit.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/proc/src/swarmbit/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libswarmbit.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/swarmbit.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/swarmbit.dir/link.txt --verbose=$(VERBOSE)
 
@@ -141,6 +141,6 @@ CMakeFiles/swarmbit.dir/clean:
 .PHONY : CMakeFiles/swarmbit.dir/clean
 
 CMakeFiles/swarmbit.dir/depend:
-	cd /Users/proc/src/bittorrent-client/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/proc/src/bittorrent-client /Users/proc/src/bittorrent-client /Users/proc/src/bittorrent-client/build /Users/proc/src/bittorrent-client/build /Users/proc/src/bittorrent-client/build/CMakeFiles/swarmbit.dir/DependInfo.cmake "--color=$(COLOR)" swarmbit
+	cd /Users/proc/src/swarmbit/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/proc/src/swarmbit /Users/proc/src/swarmbit /Users/proc/src/swarmbit/build /Users/proc/src/swarmbit/build /Users/proc/src/swarmbit/build/CMakeFiles/swarmbit.dir/DependInfo.cmake "--color=$(COLOR)" swarmbit
 .PHONY : CMakeFiles/swarmbit.dir/depend
 

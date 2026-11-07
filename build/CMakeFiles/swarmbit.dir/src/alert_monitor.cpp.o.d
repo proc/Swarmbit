@@ -1,8 +1,8 @@
 CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/SDKSettings.json \
-  /Users/proc/src/bittorrent-client/src/alert_monitor.cpp \
-  /Users/proc/src/bittorrent-client/src/alert_monitor.hpp \
-  /Users/proc/src/bittorrent-client/src/session_manager.hpp \
+  /Users/proc/src/swarmbit/src/alert_monitor.cpp \
+  /Users/proc/src/swarmbit/src/alert_monitor.hpp \
+  /Users/proc/src/swarmbit/src/session_manager.hpp \
   /opt/homebrew/include/libtorrent/session.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/thread \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \

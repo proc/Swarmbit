@@ -1,1 +1,2 @@
 build/bt-client
+*.o

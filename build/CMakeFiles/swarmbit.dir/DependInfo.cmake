@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/proc/src/bittorrent-client/src/alert_monitor.cpp" "CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o" "gcc" "CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o.d"
-  "/Users/proc/src/bittorrent-client/src/session_manager.cpp" "CMakeFiles/swarmbit.dir/src/session_manager.cpp.o" "gcc" "CMakeFiles/swarmbit.dir/src/session_manager.cpp.o.d"
-  "/Users/proc/src/bittorrent-client/src/torrent_handle.cpp" "CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o" "gcc" "CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o.d"
+  "/Users/proc/src/swarmbit/src/alert_monitor.cpp" "CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o" "gcc" "CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o.d"
+  "/Users/proc/src/swarmbit/src/session_manager.cpp" "CMakeFiles/swarmbit.dir/src/session_manager.cpp.o" "gcc" "CMakeFiles/swarmbit.dir/src/session_manager.cpp.o.d"
+  "/Users/proc/src/swarmbit/src/torrent_handle.cpp" "CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o" "gcc" "CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

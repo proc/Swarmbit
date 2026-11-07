@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/proc/src/bittorrent-client/tests/test_torrent.cpp" "CMakeFiles/swarmbit-tests.dir/tests/test_torrent.cpp.o" "gcc" "CMakeFiles/swarmbit-tests.dir/tests/test_torrent.cpp.o.d"
+  "/Users/proc/src/swarmbit/tests/test_torrent.cpp" "CMakeFiles/swarmbit-tests.dir/tests/test_torrent.cpp.o" "gcc" "CMakeFiles/swarmbit-tests.dir/tests/test_torrent.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

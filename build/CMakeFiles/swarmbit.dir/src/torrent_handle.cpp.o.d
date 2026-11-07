@@ -1,8 +1,8 @@
 CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/SDKSettings.json \
-  /Users/proc/src/bittorrent-client/src/torrent_handle.cpp \
-  /Users/proc/src/bittorrent-client/src/torrent_handle.hpp \
-  /Users/proc/src/bittorrent-client/src/session_manager.hpp \
+  /Users/proc/src/swarmbit/src/torrent_handle.cpp \
+  /Users/proc/src/swarmbit/src/torrent_handle.hpp \
+  /Users/proc/src/swarmbit/src/session_manager.hpp \
   /opt/homebrew/include/libtorrent/session.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/thread \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
