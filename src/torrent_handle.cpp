@@ -6,6 +6,7 @@
 #include <libtorrent/load_torrent.hpp>
 #include <libtorrent/magnet_uri.hpp>
 #include <libtorrent/peer_info.hpp>
+#include <libtorrent/torrent_flags.hpp>
 #include <libtorrent/torrent_info.hpp>
 
 #include <algorithm>
@@ -57,11 +58,12 @@ Torrent Torrent::add_file(SessionManager& session,
                                           static_cast<std::ptrdiff_t>(buffer.size())));
 
     if (!save_path.empty()) {
-        params.save_path = save_path;
+        params.save_path = bt::expand_path(save_path).string();
     } else if (params.save_path.empty()) {
-        boost::system::error_code fec;
-        params.save_path = fs::current_path(fec).string();
+        params.save_path = bt::download_dir().string();
     }
+    std::error_code fec;
+    fs::create_directories(params.save_path, fec);
 
     // Sparse mode: allocate file storage lazily as data is downloaded rather
     // than pre-allocating the full file size up front.
@@ -108,11 +110,12 @@ Torrent Torrent::add_magnet(SessionManager& session,
     libtorrent::add_torrent_params params =
         libtorrent::parse_magnet_uri(magnet_uri);
     if (!save_path.empty()) {
-        params.save_path = save_path;
+        params.save_path = bt::expand_path(save_path).string();
     } else if (params.save_path.empty()) {
-        std::error_code fec;
-        params.save_path = fs::current_path(fec).string();
+        params.save_path = bt::download_dir().string();
     }
+    std::error_code fec;
+    fs::create_directories(params.save_path, fec);
 
     auto existing = session.session().find_torrent(params.info_hashes.v1);
     if (existing.is_valid()) {
@@ -139,7 +142,11 @@ bool Torrent::is_valid() const {
 }
 
 bool Torrent::is_finished() const {
-    return status().is_seeding;
+    if (!is_valid()) return false;
+    const auto st = status();
+    return st.is_seeding || st.is_finished ||
+           st.state == libtorrent::torrent_status::seeding ||
+           st.state == libtorrent::torrent_status::finished;
 }
 
 Torrent::State Torrent::state() const {
@@ -150,15 +157,20 @@ Torrent::State Torrent::state() const {
         case libtorrent::torrent_status::checking_resume_data:
             return State::Checking;
         case libtorrent::torrent_status::downloading_metadata:
+            return State::Downloading;
         case libtorrent::torrent_status::downloading:
+            if (st.is_seeding || st.is_finished) return State::Completed;
             return State::Downloading;
         case libtorrent::torrent_status::seeding:
             return State::Seeding;
         case libtorrent::torrent_status::finished:
-            return st.is_seeding ? State::Completed : State::Downloading;
+            return State::Completed;
         default:
-            return State::Downloading;
+            break;
     }
+    if (st.is_seeding) return State::Seeding;
+    if (st.is_finished) return State::Completed;
+    return State::Downloading;
 }
 
 long long Torrent::download_rate() const {
@@ -174,7 +186,13 @@ int Torrent::num_peers() const {
 }
 
 int Torrent::num_complete() const {
-    return status().num_complete;
+    // num_complete is the total number of seeders known via tracker scrape.
+    // The tracker only reports it after an announce that includes scrape
+    // data, so it stays -1 until then. Fall back to num_seeds (peers we are
+    // actually connected to that are seeding) when scrape is unavailable.
+    const auto st = status();
+    if (st.num_complete >= 0) return st.num_complete;
+    return st.num_seeds;
 }
 
 int Torrent::num_incomplete() const {
@@ -237,9 +255,11 @@ void Torrent::resume() {
 
 void Torrent::remove(bool delete_files) {
     if (!is_valid()) return;
-    libtorrent::remove_flags_t flags;
+    libtorrent::remove_flags_t flags{};
     if (delete_files) {
-        flags = libtorrent::remove_flags_t(0);
+        // Ask libtorrent to delete the downloaded payload (and its partfile)
+        // from disk once the torrent is removed from the session.
+        flags = libtorrent::session_handle::delete_files;
     }
     session_.session().remove_torrent(handle_, flags);
 }
@@ -284,15 +304,54 @@ void Torrent::update_sequential_window() {
     }
 }
 
+long long Torrent::bytes_remaining() const {
+    if (!is_valid()) return 0;
+    const auto st = status();
+    const long long remaining = st.total_wanted - st.total_wanted_done;
+    return remaining > 0 ? remaining : 0;
+}
+
+long long Torrent::eta_seconds() const {
+    if (!is_valid()) return -1;
+    const auto st = status();
+    const long long remaining = st.total_wanted - st.total_wanted_done;
+    if (st.is_seeding || st.is_finished) return 0;
+    // total_wanted is not known until metadata arrives.
+    if (!st.has_metadata) return -1;
+    if (remaining <= 0) return 0;
+    if (st.state == libtorrent::torrent_status::checking_files ||
+        st.state == libtorrent::torrent_status::checking_resume_data) {
+        return -1;
+    }
+    if (st.flags & libtorrent::torrent_flags::paused) return -1;
+    const long long rate = st.download_payload_rate;
+    if (rate <= 0) return -1;
+    return (remaining + rate - 1) / rate;  // round up
+}
+
 double Torrent::progress() const {
     if (!is_valid()) return -1.0;
     const auto st = status();
+    if (st.is_seeding || st.is_finished ||
+        st.state == libtorrent::torrent_status::seeding ||
+        st.state == libtorrent::torrent_status::finished) {
+        return 1.0;
+    }
+    if (st.total_wanted > 0) {
+        if (st.total_wanted_done >= st.total_wanted) return 1.0;
+        double p = static_cast<double>(st.total_wanted_done) /
+                   static_cast<double>(st.total_wanted);
+        return p > 1.0 ? 1.0 : (p < 0.0 ? 0.0 : p);
+    }
     auto ti = handle_.torrent_file();
     if (ti && ti->total_size() > 0) {
-        return static_cast<double>(st.total_done) /
-               static_cast<double>(ti->total_size());
+        if (st.total_done >= ti->total_size()) return 1.0;
+        double p = static_cast<double>(st.total_done) /
+                   static_cast<double>(ti->total_size());
+        return p > 1.0 ? 1.0 : (p < 0.0 ? 0.0 : p);
     }
-    return static_cast<double>(st.progress);
+    double p = static_cast<double>(st.progress);
+    return p > 1.0 ? 1.0 : (p < 0.0 ? 0.0 : p);
 }
 
 libtorrent::torrent_status Torrent::status() const {

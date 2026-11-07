@@ -16,4 +16,4 @@ test: build
 	ctest --test-dir $(BUILD_DIR) --output-on-failure
 
 clean:
-	rm -rf $(BUILD_DIR)
+	find $(BUILD_DIR) -mindepth 1 ! -name '.gitkeep' -delete

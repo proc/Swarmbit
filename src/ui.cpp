@@ -7,7 +7,8 @@
 //   j / Down   select next     k / Up   select previous
 //   g          go to top       G        go to bottom
 //   Enter      add             d      download/pause toggle
-//   u          resume          x      remove (with files)
+//   u          resume          x      remove (keep files)
+//   X          remove and delete downloaded files
 //   q / Esc    quit
 //
 // The torrent list is polled from a background task every 400 ms so the UI
@@ -25,6 +26,9 @@
 #include <libtorrent/write_resume_data.hpp>
 
 #include <rtxui/rtxui.hpp>
+
+#include <sys/ioctl.h>
+#include <unistd.h>
 
 #include <algorithm>
 #include <atomic>
@@ -84,6 +88,8 @@ void RowFields(const Row& r, rtxui::FieldSink& out) {
     out("detail_uploaded", r.detail_uploaded);
     out("detail_down_rate", r.detail_down_rate);
     out("detail_up_rate", r.detail_up_rate);
+    out("detail_eta", r.detail_eta);
+    out("detail_bar_width", std::to_string(r.detail_bar_width));
 }
 
 void Fields(const Row& r, rtxui::FieldSink& out) {
@@ -144,6 +150,53 @@ std::string human_rate(long long bytes_per_sec) {
     return human_bytes(bytes_per_sec) + "/s";
 }
 
+// Human-readable ETA from Torrent::eta_seconds(): "Done" for 0, "∞" when
+// unknown (-1), otherwise the two most significant units, e.g. "2d 03h",
+// "1h 05m", "4m 09s", "37s".
+std::string human_eta(long long secs) {
+    if (secs < 0) return "\u221E";
+    if (secs == 0) return "Done";
+    const long long days = secs / 86400;
+    const long long hours = (secs % 86400) / 3600;
+    const long long mins = (secs % 3600) / 60;
+    const long long s = secs % 60;
+    char buf[32];
+    if (days >= 100) {
+        return "\u221E";  // too far out to be meaningful
+    } else if (days > 0) {
+        std::snprintf(buf, sizeof(buf), "%lldd %02lldh", days, hours);
+    } else if (hours > 0) {
+        std::snprintf(buf, sizeof(buf), "%lldh %02lldm", hours, mins);
+    } else if (mins > 0) {
+        std::snprintf(buf, sizeof(buf), "%lldm %02llds", mins, s);
+    } else {
+        std::snprintf(buf, sizeof(buf), "%llds", s);
+    }
+    return buf;
+}
+
+// Detect the terminal width in columns, falling back gracefully if not a tty.
+int terminal_columns() {
+    const char* headless = std::getenv("RTXUI_HEADLESS");
+    if (headless) {
+        int w = 0, h = 0;
+        if (std::sscanf(headless, "%dx%d", &w, &h) == 2 && w > 0) return w;
+    }
+    struct winsize ws{};
+    if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws) == 0 && ws.ws_col > 0) {
+        return ws.ws_col;
+    }
+    if (ioctl(STDIN_FILENO, TIOCGWINSZ, &ws) == 0 && ws.ws_col > 0) {
+        return ws.ws_col;
+    }
+    const char* cols = std::getenv("COLUMNS");
+    if (cols) {
+        int c = std::atoi(cols);
+        if (c > 0) return c;
+    }
+    return 100;
+}
+
 // Polls the live session into a vector of Rows. The UI holds one of these and
 // refreshes it on a timer.
 //
@@ -154,16 +207,33 @@ std::string human_rate(long long bytes_per_sec) {
 class Snapshot {
 public:
     explicit Snapshot()
-        : session_(std::make_unique<bt::SessionManager>()) {
+        : session_(std::make_unique<bt::SessionManager>(resume_dir_string())) {
+        // Restore from fast-resume data first so torrents come back with
+        // their progress (no full recheck) and their saved paused/running
+        // state. load_persisted() then adds anything that has no resume file
+        // yet (e.g. added just before a crash).
+        session_->restore_torrents();
         load_persisted();
     }
 
     bt::SessionManager& session() { return *session_; }
 
+    // Where per-torrent resume data is persisted so completed/in-progress
+    // torrents reappear after a restart. Used by run_ui() to configure the
+    // AlertMonitor's resume dir so it matches restore_torrents().
+    std::string resume_dir_string() const {
+        return resume_dir_string_static();
+    }
+
     void refresh() {
         std::lock_guard<std::mutex> lock(mutex_);
         rows_.ptr->clear();
         *rows_.ptr = gather();
+    }
+
+    static std::string resume_dir_string_static() {
+        std::error_code ec;
+        return (state_dir() / "resume").string();
     }
 
     // Add a torrent file or magnet URI to the owning session.
@@ -193,7 +263,7 @@ public:
     }
 
     // Drive the torrent whose hash is `hash`: 0=toggle pause, 1=resume,
-    // 2=remove with files.
+    // 2=remove with files, 3=remove keeping files.
     void control(const std::string& hash, int action) {
         std::lock_guard<std::mutex> lock(mutex_);
         libtorrent::sha1_hash h = parse_hash(hash);
@@ -229,7 +299,8 @@ public:
                 }
                 break;
             case 2:  // remove (with files)
-                t.remove(true);
+            case 3:  // remove (keep files)
+                t.remove(action == 2);
                 persisted_.erase(hash);
                 {
                     std::error_code ec;
@@ -249,7 +320,7 @@ private:
     };
 
     static std::filesystem::path state_dir() {
-        return std::filesystem::path(".swarmbit");
+        return bt::state_dir();  // ~/.swarmbit
     }
 
     static std::filesystem::path state_file_path() {
@@ -326,6 +397,18 @@ private:
             entry.active = true;
             if (entry.info_hash.empty() || entry.target.empty()) continue;
 
+            // Already restored from resume data: just honour the "active"
+            // state recorded here instead of adding it a second time.
+            {
+                auto existing =
+                    session_->session().find_torrent(parse_hash(entry.info_hash));
+                if (existing.is_valid()) {
+                    bt::Torrent(*session_, existing).resume();
+                    persisted_[entry.info_hash] = std::move(entry);
+                    continue;
+                }
+            }
+
             try {
                 const bool is_magnet = entry.target.rfind("magnet:", 0) == 0;
                 const auto cached = cached_torrent_path(entry.info_hash);
@@ -394,6 +477,9 @@ private:
                 // Pre-compute display strings so the template can use simple
                 // field access (RTXUI does not evaluate expressions).
                 double pct = r.progress;
+                if (r.finished || r.state == "Completed" || r.state == "Seeding") {
+                    pct = 1.0;
+                }
                 if (pct > 1.0) pct = 1.0;
                 if (pct < 0.0) pct = 0.0;
                 r.progress_pct_num = pct * 100.0;
@@ -413,6 +499,8 @@ private:
                 r.detail_uploaded = r.upload_total_str;
                 r.detail_down_rate = r.down_rate_str;
                 r.detail_up_rate = r.up_rate_str;
+                r.detail_eta = human_eta(t.eta_seconds());
+                r.detail_bar_width = std::max(10, terminal_columns() - 6);
                 for (const auto& pi : t.peers()) {
                     auto single_line = [](std::string s, std::size_t max_len) {
                         for (char& ch : s) {
@@ -484,11 +572,23 @@ public:
     bool no_peers = true;
     std::size_t selected = 0;
     std::string status_msg;
+    int term_width_ = 0;
     rtxui::Screen* screen_ = nullptr;  // set in main() for quit (public so main can set it)
+
+    int detail_bar_width() const {
+        int w = term_width_ > 0 ? term_width_ : terminal_columns();
+        return std::max(10, w - 6);
+    }
 
     // Global keyboard shortcuts. Returns true if the key was handled so it
     // doesn't fall through to focused widgets.
     bool OnEvent(rtxui::Event event) override {
+        if (event.is<rtxui::Event::Resized>()) {
+            const auto& r = event.get<rtxui::Event::Resized>();
+            term_width_ = r.width();
+            refresh_detail();
+            return ComponentBase::OnEvent(event);
+        }
         if (!event.is<rtxui::Event::Keyboard>()) {
             return ComponentBase::OnEvent(event);
         }
@@ -538,7 +638,10 @@ public:
             return true;
         }
         // Shift+X removes the torrent and deletes its downloaded data.
-        if (cp == 'X' && mod.shift()) {
+        // Terminals deliver Shift+x as an uppercase 'X' and usually don't set
+        // the shift modifier for printable keys, so match the codepoint
+        // alone. Lowercase 'x' (below) removes but keeps the data.
+        if (cp == 'X') {
             RemoveWithFiles();
             return true;
         }
@@ -581,9 +684,10 @@ public:
                     (i == selected) ? "selected" : "";
             }
             rows = ui::RowList(std::move(updated_rows));
-            const auto& sel = rows.at(selected);
-            next_detail->push_back(sel);
+            auto sel = rows.at(selected);
+            sel.detail_bar_width = detail_bar_width();
             *next_peers = sel.peer_list;
+            next_detail->push_back(std::move(sel));
         }
         detail = ui::RowList(std::move(next_detail));
         selected_peers = ui::PeerList(std::move(next_peers));
@@ -595,12 +699,12 @@ public:
     void scroll_selected_into_view() {
         auto wrap = QueryElement(".tablewrap");
         if (!wrap) return;
-        const int row_y = static_cast<int>(selected) * 2;
+        const int row_y = static_cast<int>(selected) * 3;
         const int cur_y = wrap.scroll_y();
         if (row_y < cur_y) {
             wrap.SetScrollY(row_y);
-        } else if (row_y > cur_y + 10) {
-            wrap.SetScrollY(row_y - 10);
+        } else if (row_y > cur_y + 12) {
+            wrap.SetScrollY(row_y - 12);
         }
     }
 
@@ -655,7 +759,7 @@ public:
         const ui::Row* r = current();
         if (!r) return;
         try {
-            snap_.control(r->info_hash, 2);
+            snap_.control(r->info_hash, 3);
             status_msg = "Removed " + r->name;
         } catch (const std::exception& e) {
             status_msg = std::string("Error: ") + e.what();
@@ -721,7 +825,7 @@ public:
     <for each="{detail}" as="d">
     <div class="detail-title">{d.name}</div>
     <div class="detail-hash">{d.info_hash}</div>
-    <progress class="detailbar" value="{d.detail_progress_num}" max="100" width="60" />
+    <progress class="detailbar" value="{d.detail_progress_num}" max="100" width="{d.detail_bar_width}" />
     <div class="detail-stats">
       <span>Progress: {d.detail_progress}</span>
       <span>Size: {d.detail_size}</span>
@@ -731,6 +835,7 @@ public:
       <span>Seeds: {d.seeds}</span>
       <span>Down: {d.detail_down_rate}</span>
       <span>Up: {d.detail_up_rate}</span>
+      <span>ETA: {d.detail_eta}</span>
     </div>
     </for>
     <div class="detail-peers">
@@ -777,15 +882,26 @@ public:
     --border: rgb(48, 54, 61);
     --text: rgb(230, 237, 243);
     --muted: rgb(139, 148, 158);
-    --accent: rgb(88, 166, 255);
+    --accent: #00B8FF;
     --green: #C8B3F6;
     --amber: rgb(212, 175, 55);
     --red: rgb(248, 81, 73);
+      --orange: #FF9900;
+      --mint: #00FF9F;
+      --magenta: #D600FF;
+      --header: #00B8FF;
 
     display: flex;
     flex-direction: column;
     background-color: var(--bg);
     color: var(--text);
+    width: 100%;
+    height: 100%;
+  }
+
+  .app {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
   }
@@ -798,12 +914,12 @@ public:
     border-color: var(--border);
     background-color: var(--panel);
   }
-  .title { color: var(--accent); font-weight: bold; }
+  .title { color: var(--orange); font-weight: bold; }
   .subtitle { color: var(--muted); margin-left: 1; }
   .spacer { flex-grow: 1; }
-  .help { color: var(--amber); }
+  .help { color: var(--orange); }
 
-  .tablewrap { flex-grow: 1; overflow-y: auto; }
+  .tablewrap { flex-grow: 1; min-height: 8; overflow-y: auto; }
   .list { width: 100%; }
   th, td {
     padding: 0 2;
@@ -811,8 +927,7 @@ public:
     white-space: nowrap;
   }
   .list td {
-    height: 1;
-    max-height: 1;
+    padding: 1 2;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -820,22 +935,22 @@ public:
   thead th {
     position: sticky;
     top: 0;
-    color: var(--accent);
+    padding: 0 2;
+    color: var(--header);
     border-bottom: solid;
     border-color: var(--border);
     background-color: var(--panel);
   }
   .row {
-    height: 1;
-    max-height: 1;
     white-space: nowrap;
   }
   .row.selected, .selected {
-    background-color: rgba(88, 166, 255, 0.25);
-    color: var(--text);
+    background-color: rgba(214, 0, 255, 0.18);
+    color: var(--magenta);
+    font-weight: bold;
   }
   .selected td {
-    color: var(--text);
+    color: var(--magenta);
   }
   .col-name {
     width: 48;
@@ -843,19 +958,24 @@ public:
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: bold;
   }
-  .col-state { width: 15; min-width: 15; flex-shrink: 0; color: var(--muted); white-space: nowrap; }
-  .col-stateDownloading, .Downloading { color: var(--accent); }
+  table thead th {
+    font-weight: bold;
+    color: #00FFFF;
+  }
+  .col-state { width: 15; min-width: 15; flex-shrink: 0; white-space: nowrap; }
+  .col-stateDownloading, .Downloading { color: var(--orange); }
   .col-stateSeeding, .Seeding { color: var(--green); }
   .col-stateCompleted, .Completed { color: var(--green); }
   .col-stateChecking, .Checking { color: var(--amber); }
   .col-pct { width: 27; min-width: 27; flex-shrink: 0; display: flex; align-items: center; gap: 1; white-space: nowrap; }
-  .bar { color: var(--accent); background-color: var(--border); }
-  .col-down { width: 14; min-width: 14; flex-shrink: 0; color: var(--muted); white-space: nowrap; }
-  .col-down-rate { width: 14; min-width: 14; flex-shrink: 0; color: var(--muted); white-space: nowrap; }
-  .col-up { width: 14; min-width: 14; flex-shrink: 0; color: var(--muted); white-space: nowrap; }
-  .col-up-rate { width: 14; min-width: 14; flex-shrink: 0; color: var(--muted); white-space: nowrap; }
-  .col-peers { width: 9; min-width: 9; flex-shrink: 0; color: var(--muted); white-space: nowrap; }
+  .bar { color: var(--mint); background-color: var(--border); }
+  .col-down { width: 14; min-width: 14; flex-shrink: 0; white-space: nowrap; }
+  .col-down-rate { width: 14; min-width: 14; flex-shrink: 0; white-space: nowrap; }
+  .col-up { width: 14; min-width: 14; flex-shrink: 0;  white-space: nowrap; }
+  .col-up-rate { width: 14; min-width: 14; flex-shrink: 0; white-space: nowrap; }
+  .col-peers { width: 9; min-width: 9; flex-shrink: 0; white-space: nowrap; }
 
   .detail {
     display: flex;
@@ -874,7 +994,7 @@ public:
     text-overflow: ellipsis;
   }
   .detail-hash { color: var(--muted); }
-  .detailbar { color: var(--green); background-color: var(--border); margin: 1 0; }
+  .detailbar { color: var(--mint); background-color: var(--border); margin: 1 0; }
   .detail-stats { display: flex; flex-wrap: wrap; gap: 0 3; }
   .detail-stats span { color: var(--muted); }
   .detail-peers {
@@ -883,12 +1003,14 @@ public:
     flex-shrink: 0;
     margin-top: 1;
   }
-  .detail-peers-header { color: var(--accent); font-weight: bold; }
+  .detail-peers-header { color: var(--header); font-weight: bold; }
   .detail-peers-empty { color: var(--muted); }
   .detail-peers-list {
     flex-shrink: 0;
-    height: 23;
-    min-height: 23;
+    height: 22;
+    min-height: 22;
+    overflow-y: auto;
+    scrollbar-width: none;
   }
   .peer-table { width: 100%; }
   .peer-row {
@@ -899,7 +1021,7 @@ public:
   .peer-table th {
     padding: 0 2 0 0;
     white-space: nowrap;
-    color: var(--accent);
+    color: var(--header);
     border-bottom: solid;
     border-color: var(--border);
     background-color: var(--panel);
@@ -918,7 +1040,7 @@ public:
   .col-peer-pct { width: 10; color: var(--muted); white-space: nowrap; }
   .col-peer-down { width: 12; color: var(--muted); white-space: nowrap; }
   .col-peer-up { flex-grow: 1; color: var(--muted); white-space: nowrap; }
-  .peer-table thead th { color: var(--accent); }
+  .peer-table thead th { color: var(--header); }
   .detail-keys { color: var(--muted); margin-top: 1; }
   .detail-keys span { margin-right: 2; }
 </style>
@@ -951,8 +1073,11 @@ int run_ui(const std::string& preload) {
     Snapshot snapshot;
 
     // Start the monitor so libtorrent alerts are drained on a background
-    // thread; the UI polls state directly via Snapshot.
+    // thread; the UI polls state directly via Snapshot. The monitor also
+    // writes fast-resume data to the same directory restore_torrents() reads
+    // (torrents were already restored in Snapshot's constructor).
     bt::AlertMonitor monitor(snapshot.session());
+    monitor.set_resume_dir(snapshot.resume_dir_string());
     monitor.start();
 
     // Optionally add a torrent immediately on launch (used by `swarmbit add`).
@@ -992,6 +1117,9 @@ int run_ui(const std::string& preload) {
     polling.store(false);
     poller.join();
     monitor.stop();
+    // Flush up-to-date resume data for every torrent before the session is
+    // torn down, so the next launch restores exact progress.
+    monitor.save_all_resume_data();
     return 0;
 }
 }  // namespace bt

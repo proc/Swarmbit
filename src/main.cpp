@@ -50,10 +50,13 @@ int hexdigit(char c) {
 
 void print_usage(const char* prog) {
     std::cout <<
-        "Usage: " << prog << " [command] [args]\n"
+        "Usage: " << prog << " [options] [command] [args]\n"
+        "Options:\n"
+        "  --download-dir <path>, -o <path>  Set download directory (default: ~/Downloads)\n"
         "Commands:\n"
         "  add <torrent|magnet>   Launch the RTXUI dashboard (blocks until q/Esc)\n"
         "  ui                     Launch the RTXUI dashboard (default)\n"
+        "  config [download-dir [<path>]] View or set configuration (persisted to ~/.swarmbit/config)\n"
         "  list [--verbose]\n"
         "  status <info-hash>\n"
         "  remove <info-hash> [--files]\n"
@@ -107,12 +110,60 @@ int main(int argc, char** argv) {
     std::signal(SIGINT, on_signal);
     std::signal(SIGTERM, on_signal);
 
-    std::vector<std::string> args(argv + 1, argv + argc);
-    if (argc < 2) {
+    std::vector<std::string> raw_args(argv + 1, argv + argc);
+    std::string download_dir_arg;
+    std::vector<std::string> args;
+
+    for (std::size_t i = 0; i < raw_args.size(); ++i) {
+        if (raw_args[i] == "--download-dir" || raw_args[i] == "--dir" || raw_args[i] == "-o") {
+            if (i + 1 < raw_args.size()) {
+                download_dir_arg = raw_args[++i];
+            }
+        } else if (raw_args[i].rfind("--download-dir=", 0) == 0) {
+            download_dir_arg = raw_args[i].substr(15);
+        } else if (raw_args[i].rfind("--dir=", 0) == 0) {
+            download_dir_arg = raw_args[i].substr(6);
+        } else if (raw_args[i] == "-h" || raw_args[i] == "--help") {
+            print_usage(argv[0]);
+            return 0;
+        } else {
+            args.push_back(raw_args[i]);
+        }
+    }
+
+    if (!download_dir_arg.empty()) {
+        bt::set_download_dir(download_dir_arg, false);
+    }
+
+    if (args.empty()) {
         return bt::run_ui("");
     }
 
     const std::string command = args[0];
+
+    // Configuration inspect and persist.
+    if (command == "config") {
+        if (args.size() == 1 || (args.size() == 2 && args[1] == "download-dir")) {
+            std::cout << bt::download_dir().string() << "\n";
+            return 0;
+        }
+        if (args.size() >= 3 && args[1] == "download-dir") {
+            bt::set_download_dir(args[2], true);
+            std::cout << "Download directory set to: " << bt::download_dir().string() << "\n";
+            return 0;
+        }
+        if (args.size() >= 4 && args[1] == "set" && args[2] == "download-dir") {
+            bt::set_download_dir(args[3], true);
+            std::cout << "Download directory set to: " << bt::download_dir().string() << "\n";
+            return 0;
+        }
+        if (args.size() >= 3 && args[1] == "get" && args[2] == "download-dir") {
+            std::cout << bt::download_dir().string() << "\n";
+            return 0;
+        }
+        std::cerr << "Usage: " << argv[0] << " config [download-dir [<path>]]\n";
+        return 1;
+    }
 
     // RTXUI dashboard commands. These run a blocking event loop (until
     // q/Esc); no other CLI command can run in this process.

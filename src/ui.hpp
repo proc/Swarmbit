@@ -71,12 +71,14 @@ struct Row {
     std::string up_rate_str;    // e.g. "50.0 KB/s"
     // Pre-computed detail-panel values (RTXUI cannot evaluate expressions).
     std::string detail_progress;  // e.g. "42.0%"
-    long long detail_progress_num = 0.0;  // 0..100 for <progress> value
+    double detail_progress_num = 0.0;  // 0..100 for <progress> value
     std::string detail_size;      // e.g. "1.0 GB"
     std::string detail_downloaded;
     std::string detail_uploaded;
     std::string detail_down_rate;
     std::string detail_up_rate;
+    std::string detail_eta;       // e.g. "1h 05m", "Done", "∞"
+    int detail_bar_width = 100;   // Dynamic character width based on terminal columns
     std::vector<PeerRow> peer_list;
 
     bool operator==(const Row& other) const = default;

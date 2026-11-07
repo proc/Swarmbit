@@ -2,3 +2,5 @@ build/swarmbit
 *.torrent
 *.iso
 Prime*
+.swarmbit/
+.DS_Store

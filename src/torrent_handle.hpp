@@ -50,6 +50,15 @@ public:
     long long total_upload() const;
     long long total_size() const;
 
+    // Bytes of wanted (non-skipped) data still to download.
+    long long bytes_remaining() const;
+
+    // Estimated seconds until all wanted data is downloaded, based on the
+    // current payload download rate. Returns 0 when nothing remains, and -1
+    // when the ETA is unknown (invalid handle, paused, checking, fetching
+    // metadata, or no data flowing).
+    long long eta_seconds() const;
+
     std::string name() const;
     std::string info_hash() const;
     std::string save_path() const;
