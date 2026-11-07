@@ -19,8 +19,12 @@ public:
     // Add a .torrent file or magnet link to the session. On success returns a
     // Torrent wrapping the new handle. On failure throws std::runtime_error
     // with the libtorrent error message.
-    static Torrent add_file(SessionManager& session, const std::string& torrent_path);
-    static Torrent add_magnet(SessionManager& session, const std::string& magnet_uri);
+    static Torrent add_file(SessionManager& session,
+                            const std::string& torrent_path,
+                            const std::string& save_path = "");
+    static Torrent add_magnet(SessionManager& session,
+                              const std::string& magnet_uri,
+                              const std::string& save_path = "");
 
     const libtorrent::torrent_handle& handle() const;
     bool is_valid() const;
@@ -44,6 +48,7 @@ public:
     // Cumulative payload downloaded / uploaded in bytes (per active session).
     long long total_download() const;
     long long total_upload() const;
+    long long total_size() const;
 
     std::string name() const;
     std::string info_hash() const;
@@ -52,6 +57,7 @@ public:
     void pause();
     void resume();
     void remove(bool delete_files);
+    void update_sequential_window();
 
     // File listing for this torrent.
     struct FileInfo {
@@ -60,6 +66,17 @@ public:
         double progress;  // fraction of this file downloaded
     };
     std::vector<FileInfo> files() const;
+
+    // Connected / connecting peers for this torrent.
+    struct PeerInfo {
+        std::string endpoint;      // "ip:port"
+        std::string client;        // peer software identifier
+        std::string status;        // connection status description
+        double progress = 0.0;     // fraction [0, 1] of torrent held by peer
+        long long down_rate = 0;   // payload download rate in bytes/sec
+        long long up_rate = 0;     // payload upload rate in bytes/sec
+    };
+    std::vector<PeerInfo> peers() const;
 
 private:
     libtorrent::torrent_status status() const;

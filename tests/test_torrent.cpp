@@ -85,8 +85,8 @@ void test_find_torrent() {
     auto& sh = session.session();
 
     libtorrent::add_torrent_params params;
-    params.info_hash = libtorrent::sha1_hash(
-        "2e8e44068b254814ea1a7d4969a9af1d78e0f51f");
+    params.info_hashes = libtorrent::info_hash_t(
+        libtorrent::sha1_hash("2e8e44068b254814ea1a7d4969a9af1d78e0f51f"));
     params.save_path = "/tmp/bt-test-save";
 
     libtorrent::torrent_handle h = sh.add_torrent(params);

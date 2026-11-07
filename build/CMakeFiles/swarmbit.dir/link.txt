@@ -1,2 +1,0 @@
-/usr/bin/ar qc libswarmbit.a CMakeFiles/swarmbit.dir/src/session_manager.cpp.o CMakeFiles/swarmbit.dir/src/torrent_handle.cpp.o CMakeFiles/swarmbit.dir/src/alert_monitor.cpp.o
-/usr/bin/ranlib libswarmbit.a

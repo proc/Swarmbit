@@ -3,6 +3,7 @@
 #include <libtorrent/session.hpp>
 
 #include <memory>
+#include <string>
 
 namespace bt {
 
@@ -12,7 +13,9 @@ namespace bt {
 // callers that need to add torrents or query state.
 class SessionManager {
 public:
-    SessionManager();
+    // resume_dir is where per-torrent resume data is persisted so that
+    // completed (or in-progress) torrents reappear after a restart.
+    explicit SessionManager(const std::string& resume_dir = "");
     ~SessionManager();
 
     SessionManager(const SessionManager&) = delete;
@@ -21,8 +24,15 @@ public:
     libtorrent::session_handle& session();
     const libtorrent::session_handle& session() const;
 
+    // Restore any torrents with saved resume data. Called once at startup so
+    // completed downloads persist across restarts.
+    void restore_torrents();
+
+    std::string resume_dir() const { return resume_dir_; }
+
 private:
     std::unique_ptr<libtorrent::session> session_;
+    std::string resume_dir_;
 };
 
 }  // namespace bt

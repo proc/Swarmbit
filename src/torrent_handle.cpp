@@ -1,13 +1,17 @@
 #include "torrent_handle.hpp"
 
+#include <libtorrent/bdecode.hpp>
 #include <libtorrent/error.hpp>
 #include <libtorrent/file_storage.hpp>
+#include <libtorrent/load_torrent.hpp>
 #include <libtorrent/magnet_uri.hpp>
+#include <libtorrent/peer_info.hpp>
 #include <libtorrent/torrent_info.hpp>
 
 #include <algorithm>
 #include <fstream>
 #include <sstream>
+#include <sys/stat.h>
 
 namespace bt {
 namespace fs = std::filesystem;
@@ -41,21 +45,53 @@ std::string read_file(const std::string& path) {
 Torrent::Torrent(SessionManager& session, libtorrent::torrent_handle handle)
     : session_(session), handle_(std::move(handle)) {}
 
-Torrent Torrent::add_file(SessionManager& session, const std::string& torrent_path) {
+Torrent Torrent::add_file(SessionManager& session,
+                          const std::string& torrent_path,
+                          const std::string& save_path) {
     const fs::path path(torrent_path);
 
     std::string buffer = read_file(torrent_path);
-    libtorrent::span<char const> buf_span(buffer.data(),
-                                          static_cast<std::ptrdiff_t>(buffer.size()));
-    libtorrent::torrent_info info(buf_span, libtorrent::from_span_t{});
+    libtorrent::add_torrent_params params =
+        libtorrent::load_torrent_buffer(
+            libtorrent::span<char const>(buffer.data(),
+                                          static_cast<std::ptrdiff_t>(buffer.size())));
 
-    libtorrent::add_torrent_params params;
-    params.ti = std::make_shared<libtorrent::torrent_info>(info);
-    params.info_hashes = info.info_hashes();
-
-    if (params.save_path.empty()) {
-        std::error_code fec;
+    if (!save_path.empty()) {
+        params.save_path = save_path;
+    } else if (params.save_path.empty()) {
+        boost::system::error_code fec;
         params.save_path = fs::current_path(fec).string();
+    }
+
+    // Sparse mode: allocate file storage lazily as data is downloaded rather
+    // than pre-allocating the full file size up front.
+    params.storage_mode = libtorrent::storage_mode_sparse;
+    params.flags |= libtorrent::torrent_flags::sequential_download;
+    params.max_connections = 200;
+    if (params.ti && params.ti->num_pieces() > 0) {
+        std::error_code fec;
+        const fs::path root_path =
+            fs::path(params.save_path) / params.ti->name();
+        if (!fs::exists(root_path, fec)) {
+            const int num_pieces = params.ti->num_pieces();
+            const int piece_len = std::max(1, params.ti->piece_length());
+            const int window = std::max(
+                16, static_cast<int>((2048LL * 1024 * 1024) / piece_len));
+            const int limit = std::min(num_pieces, window);
+            params.piece_priorities.assign(
+                static_cast<std::size_t>(num_pieces), libtorrent::dont_download);
+            for (int i = 0; i < limit; ++i) {
+                params.piece_priorities[static_cast<std::size_t>(i)] =
+                    libtorrent::default_priority;
+            }
+        }
+    }
+
+    if (params.ti) {
+        auto existing = session.session().find_torrent(params.ti->info_hashes().v1);
+        if (existing.is_valid()) {
+            return Torrent(session, existing);
+        }
     }
 
     boost::system::error_code ec;
@@ -66,13 +102,29 @@ Torrent Torrent::add_file(SessionManager& session, const std::string& torrent_pa
     return Torrent(session, handle);
 }
 
-Torrent Torrent::add_magnet(SessionManager& session, const std::string& magnet_uri) {
+Torrent Torrent::add_magnet(SessionManager& session,
+                            const std::string& magnet_uri,
+                            const std::string& save_path) {
     libtorrent::add_torrent_params params =
         libtorrent::parse_magnet_uri(magnet_uri);
-    if (params.save_path.empty()) {
+    if (!save_path.empty()) {
+        params.save_path = save_path;
+    } else if (params.save_path.empty()) {
         std::error_code fec;
         params.save_path = fs::current_path(fec).string();
     }
+
+    auto existing = session.session().find_torrent(params.info_hashes.v1);
+    if (existing.is_valid()) {
+        return Torrent(session, existing);
+    }
+
+    // Sparse mode: allocate file storage lazily as data is downloaded rather
+    // than pre-allocating the full file size up front.
+    params.storage_mode = libtorrent::storage_mode_sparse;
+    params.flags |= libtorrent::torrent_flags::sequential_download;
+    params.max_connections = 200;
+
     libtorrent::torrent_handle handle =
         session.session().add_torrent(params);
     return Torrent(session, handle);
@@ -87,12 +139,13 @@ bool Torrent::is_valid() const {
 }
 
 bool Torrent::is_finished() const {
-    return status().is_finished;
+    return status().is_seeding;
 }
 
 Torrent::State Torrent::state() const {
     if (!is_valid()) return State::NotAdded;
-    switch (status().state) {
+    const auto st = status();
+    switch (st.state) {
         case libtorrent::torrent_status::checking_files:
         case libtorrent::torrent_status::checking_resume_data:
             return State::Checking;
@@ -102,7 +155,7 @@ Torrent::State Torrent::state() const {
         case libtorrent::torrent_status::seeding:
             return State::Seeding;
         case libtorrent::torrent_status::finished:
-            return State::Completed;
+            return st.is_seeding ? State::Completed : State::Downloading;
         default:
             return State::Downloading;
     }
@@ -134,6 +187,29 @@ long long Torrent::total_download() const {
 
 long long Torrent::total_upload() const {
     return status().total_upload;
+}
+
+long long Torrent::total_size() const {
+    if (!is_valid()) return 0;
+    auto ti = handle_.torrent_file();
+    const auto st = status();
+    if (ti && !st.save_path.empty()) {
+        const auto& storage = ti->layout();
+        long long disk_bytes = 0;
+        for (auto index : storage.file_range()) {
+            const fs::path p =
+                fs::path(st.save_path) /
+                storage.file_path(static_cast<libtorrent::file_index_t>(index));
+            struct stat sb{};
+            if (::stat(p.c_str(), &sb) == 0) {
+                disk_bytes += static_cast<long long>(sb.st_blocks) * 512LL;
+            }
+        }
+        if (disk_bytes > 0) {
+            return disk_bytes;
+        }
+    }
+    return static_cast<long long>(st.total_done);
 }
 
 std::string Torrent::name() const {
@@ -168,16 +244,63 @@ void Torrent::remove(bool delete_files) {
     session_.session().remove_torrent(handle_, flags);
 }
 
+void Torrent::update_sequential_window() {
+    if (!is_valid()) return;
+    auto ti = handle_.torrent_file();
+    if (!ti || ti->num_pieces() <= 0) return;
+
+    const int num_pieces = ti->num_pieces();
+    const auto st = status();
+    if (st.state == libtorrent::torrent_status::checking_files ||
+        st.state == libtorrent::torrent_status::checking_resume_data ||
+        st.state == libtorrent::torrent_status::downloading_metadata) {
+        return;
+    }
+
+    const auto& have = st.pieces;
+    if (static_cast<int>(have.size()) != num_pieces) {
+        return;
+    }
+
+    const int piece_len = std::max(1, ti->piece_length());
+    const int window = std::max(
+        16, static_cast<int>((2048LL * 1024 * 1024) / piece_len));
+
+    std::vector<libtorrent::download_priority_t> prios(
+        static_cast<std::size_t>(num_pieces), libtorrent::dont_download);
+    int missing_wanted = 0;
+    for (int i = 0; i < num_pieces; ++i) {
+        if (have[static_cast<libtorrent::piece_index_t>(i)]) {
+            prios[static_cast<std::size_t>(i)] = libtorrent::default_priority;
+        } else if (missing_wanted < window) {
+            prios[static_cast<std::size_t>(i)] = libtorrent::default_priority;
+            ++missing_wanted;
+        }
+    }
+
+    auto cur = handle_.get_piece_priorities();
+    if (cur != prios) {
+        handle_.prioritize_pieces(prios);
+    }
+}
+
 double Torrent::progress() const {
     if (!is_valid()) return -1.0;
-    return static_cast<double>(status().progress);
+    const auto st = status();
+    auto ti = handle_.torrent_file();
+    if (ti && ti->total_size() > 0) {
+        return static_cast<double>(st.total_done) /
+               static_cast<double>(ti->total_size());
+    }
+    return static_cast<double>(st.progress);
 }
 
 libtorrent::torrent_status Torrent::status() const {
     return handle_.status(
         libtorrent::torrent_handle::query_name |
         libtorrent::torrent_handle::query_save_path |
-        libtorrent::torrent_handle::query_pieces);
+        libtorrent::torrent_handle::query_pieces |
+        libtorrent::torrent_handle::query_accurate_download_counters);
 }
 
 std::vector<Torrent::FileInfo> Torrent::files() const {
@@ -185,7 +308,7 @@ std::vector<Torrent::FileInfo> Torrent::files() const {
     auto ti = handle_.torrent_file();
     if (!ti) return out;
 
-    const auto& storage = ti->files();
+    const auto& storage = ti->layout();
     const int num_pieces = ti->num_pieces();
     const double piece_size = static_cast<double>(storage.piece_length());
 
@@ -232,6 +355,78 @@ std::vector<Torrent::FileInfo> Torrent::files() const {
         fi.progress = static_cast<double>(have) /
                       static_cast<double>(last_piece - first_piece);
         out.push_back(std::move(fi));
+    }
+    return out;
+}
+
+std::vector<Torrent::PeerInfo> Torrent::peers() const {
+    std::vector<PeerInfo> out;
+    if (!is_valid()) return out;
+
+    std::vector<libtorrent::peer_info> raw_peers;
+    handle_.get_peer_info(raw_peers);
+    std::stable_sort(
+        raw_peers.begin(), raw_peers.end(),
+        [](const libtorrent::peer_info& a, const libtorrent::peer_info& b) {
+            if (a.payload_down_speed != b.payload_down_speed) {
+                return a.payload_down_speed > b.payload_down_speed;
+            }
+            return a.payload_up_speed > b.payload_up_speed;
+        });
+    const std::size_t max_peers = std::min<std::size_t>(raw_peers.size(), 20);
+    out.reserve(max_peers);
+
+    for (std::size_t idx = 0; idx < max_peers; ++idx) {
+        const auto& p = raw_peers[idx];
+        PeerInfo pi;
+        if (p.flags & libtorrent::peer_info::i2p_socket) {
+            pi.endpoint = "i2p";
+        } else {
+            const auto ep = p.remote_endpoint();
+            pi.endpoint = ep.address().to_string() + ":" + std::to_string(ep.port());
+        }
+        pi.client = p.client.empty() ? "-" : p.client;
+        pi.progress = static_cast<double>(p.progress);
+        pi.down_rate = static_cast<long long>(p.payload_down_speed);
+        pi.up_rate = static_cast<long long>(p.payload_up_speed);
+
+        if (p.flags & libtorrent::peer_info::connecting) {
+            pi.status = "Connecting";
+        } else if (p.flags & libtorrent::peer_info::handshake) {
+            pi.status = "Handshake";
+        } else {
+            std::vector<std::string> tags;
+            if (p.flags & libtorrent::peer_info::seed) {
+                tags.push_back("Seed");
+            }
+            if (p.flags & libtorrent::peer_info::remote_choked) {
+                tags.push_back("Choked");
+            } else {
+                tags.push_back("Unchoked");
+            }
+            if (p.flags & libtorrent::peer_info::snubbed) {
+                tags.push_back("Snubbed");
+            }
+            if (p.flags & libtorrent::peer_info::on_parole) {
+                tags.push_back("Parole");
+            }
+            if (p.flags & libtorrent::peer_info::utp_socket) {
+                tags.push_back("uTP");
+            }
+            if (p.flags & libtorrent::peer_info::ssl_socket) {
+                tags.push_back("SSL");
+            }
+            pi.status = "Connected";
+            if (!tags.empty()) {
+                pi.status += " (";
+                for (std::size_t i = 0; i < tags.size(); ++i) {
+                    if (i > 0) pi.status += ", ";
+                    pi.status += tags[i];
+                }
+                pi.status += ")";
+            }
+        }
+        out.push_back(std::move(pi));
     }
     return out;
 }

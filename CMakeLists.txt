@@ -30,12 +30,27 @@ add_library(swarmbit STATIC
   src/session_manager.cpp
   src/torrent_handle.cpp
   src/alert_monitor.cpp
+  src/ui.cpp
 )
 target_include_directories(swarmbit PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_link_libraries(swarmbit PUBLIC ${TORRENT_TARGET})
 
-add_executable(swarmbit-cli src/main.cpp)
-target_link_libraries(swarmbit-cli PRIVATE swarmbit)
+# ui.cpp uses RTXUI, which requires C++23. Set the standard on the swarmbit
+# target so both main.cpp and ui.cpp compile together.
+set_target_properties(swarmbit PROPERTIES CXX_STANDARD 23
+  CXX_STANDARD_REQUIRED ON)
+
+# Single `swarmbit` executable. It dispatches `add`/`ui` to the RTXUI
+# dashboard and runs one-shot commands (list/status/etc.) on the CLI.
+# RTXUI is a header C++23 library installed via Homebrew; find it and require
+# C++23 for this target only.
+find_package(rtxui REQUIRED)
+# main.cpp calls bt::run_ui (in ui.cpp), so the executable pulls RTXUI symbols.
+target_link_libraries(swarmbit PRIVATE rtxui::rtxui)
+
+add_executable(swarmbit-bin src/main.cpp)
+target_link_libraries(swarmbit-bin PRIVATE swarmbit)
+set_target_properties(swarmbit-bin PROPERTIES OUTPUT_NAME swarmbit CXX_STANDARD 23 CXX_STANDARD_REQUIRED ON)
 
 enable_testing()
 add_executable(swarmbit-tests tests/test_torrent.cpp)

@@ -1,7 +1,13 @@
-// Command-line BitTorrent client built on libtorrent (Swarmbit).
+// Swarmbit: a BitTorrent client built on libtorrent with an optional
+// RTXUI dashboard.
 //
 // Usage:
-//   swarmbit add <torrent-file|magnet-uri>
+//   swarmbit                                 Launch the RTXUI dashboard and
+//                                            resume downloading torrents.
+//   swarmbit add <torrent-file|magnet-uri>   Launch the RTXUI dashboard with
+//                                            the torrent preloaded (blocks
+//                                            until q/Esc).
+//   swarmbit ui                              Launch the RTXUI dashboard.
 //   swarmbit list [--verbose]
 //   swarmbit status <info-hash>
 //   swarmbit remove <info-hash> [--files]
@@ -9,11 +15,13 @@
 //   swarmbit resume <info-hash>
 //   swarmbit ports
 //
-// The `add` command runs its event loop in the foreground; Ctrl-C performs a
-// clean shutdown (pauses torrents, tears down the session).
+// The `add`/`ui` commands run the RTXUI event loop in the foreground; all
+// other commands are one-shot. Ctrl-C performs a clean shutdown (pauses
+// torrents, tears down the session).
 
 #include "alert_monitor.hpp"
 #include "session_manager.hpp"
+#include "ui.hpp"
 #include "torrent_handle.hpp"
 
 #include <atomic>
@@ -33,8 +41,6 @@ namespace {
 std::atomic<bool> g_running{true};
 void on_signal(int) { g_running.store(false); }
 
-
-
 int hexdigit(char c) {
     if (c >= '0' && c <= '9') return c - '0';
     if (c >= 'a' && c <= 'f') return c - 'a' + 10;
@@ -44,9 +50,10 @@ int hexdigit(char c) {
 
 void print_usage(const char* prog) {
     std::cout <<
-        "Usage: " << prog << " <command> [args]\n"
+        "Usage: " << prog << " [command] [args]\n"
         "Commands:\n"
-        "  add <torrent|magnet>\n"
+        "  add <torrent|magnet>   Launch the RTXUI dashboard (blocks until q/Esc)\n"
+        "  ui                     Launch the RTXUI dashboard (default)\n"
         "  list [--verbose]\n"
         "  status <info-hash>\n"
         "  remove <info-hash> [--files]\n"
@@ -96,55 +103,37 @@ void print_torrent_status(const bt::Torrent& t) {
 
 }  // namespace
 
-
-// Runs the foreground-style download progress display in a background thread.
-// Used by the `add` command so the main thread stays responsive to other
-// commands (list, status, pause, resume, remove, ports).
-void run_download_loop(bt::Torrent& t, std::atomic<bool>& running) {
-    while (running.load() && t.is_valid()) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(200));
-
-        // ANSI colors: green bar fills as progress grows, dimmed stats.
-        const char* reset = "\033[0m";
-        const char* green = "\033[32m";
-        const char* cyan = "\033[36m";
-        const char* yellow = "\033[33m";
-        const char* magenta = "\033[35m";
-        const char* bold = "\033[1m";
-
-        double pct = t.progress();
-        if (pct > 1.0) pct = 1.0;
-        int filled = static_cast<int>(pct * 30);
-        std::string bar(filled, '#');
-        bar.append(30 - filled, '.');
-        std::cout << "\r  [" << green << bar << reset << "] "
-                  << bold << green
-                  << std::fixed << std::setprecision(1)
-                  << (pct * 100.0) << "%" << reset << "  "
-                  << cyan << "peers=" << reset << t.num_peers() << "  "
-                  << yellow << "down=" << reset << (t.download_rate() / 1024.0) << "KB/s  "
-                  << magenta << "up=" << reset << (t.upload_rate() / 1024.0) << "KB/s";
-        if (t.is_finished()) {
-            std::cout << "  " << green << "[done]" << reset;
-        }
-        std::cout << std::flush;
-    }
-}
-
 int main(int argc, char** argv) {
-    std::vector<std::string> args(argv + 1, argv + argc);
-    if (argc < 2) {
-        print_usage(argv[0]);
-        return 1;
-    }
-
     std::signal(SIGINT, on_signal);
     std::signal(SIGTERM, on_signal);
 
+    std::vector<std::string> args(argv + 1, argv + argc);
+    if (argc < 2) {
+        return bt::run_ui("");
+    }
+
     const std::string command = args[0];
 
-    // Each command creates its own session. `add` runs the download in a
-    // detached thread while this process waits for Ctrl-C.
+    // RTXUI dashboard commands. These run a blocking event loop (until
+    // q/Esc); no other CLI command can run in this process.
+    if (command == "add") {
+        if (args.size() < 2) {
+            std::cerr << "Error: add requires a torrent file or magnet URI.\n";
+            print_usage(argv[0]);
+            return 1;
+        }
+        const std::string target = args[1];
+
+        // Launch the RTXUI dashboard with the torrent preloaded. The UI runs
+        // its own event loop in the foreground (blocking until q/Esc); the
+        // torrent is added to the session immediately so it begins downloading
+        // on startup.
+        return bt::run_ui(target);
+    }
+
+    if (command == "ui") {
+        return bt::run_ui("");
+    }
 
     // One-shot commands that open/close the session quickly.
     if (command == "ports") {
@@ -193,56 +182,6 @@ int main(int argc, char** argv) {
             std::cout << "Removed " << t.name()
                       << (files ? " (with files)" : "") << "\n";
         }
-        return 0;
-    }
-
-    if (command == "add") {
-        if (args.size() < 2) {
-            std::cerr << "Error: add requires a torrent file or magnet URI.\n";
-            print_usage(argv[0]);
-            return 1;
-        }
-        const std::string target = args[1];
-        const bool is_magnet = target.rfind("magnet:", 0) == 0;
-
-        // Fork BEFORE creating any libtorrent session. The child creates its
-        // own fork-safe session and runs the download; the parent returns
-        // immediately so the shell stays responsive.
-        pid_t pid = fork();
-        if (pid < 0) {
-            std::cerr << "Error: failed to fork.\n";
-            return 1;
-        }
-        if (pid == 0) {
-            // Child: create a fresh session (fork-safe) and run the download.
-            std::setvbuf(stdout, nullptr, _IONBF, 0);
-            bt::SessionManager child_session;
-            auto torrent = std::make_unique<bt::Torrent>(
-                is_magnet
-                    ? bt::Torrent::add_magnet(child_session, target)
-                    : bt::Torrent::add_file(child_session, target));
-            bt::AlertMonitor monitor(child_session);
-            monitor.start();
-
-            bt::Torrent& t = *torrent;
-            std::cout << "Added: " << t.name() << "  (" << t.info_hash() << ")\n"
-                      << "Downloading ...\nPress Ctrl-C to stop.\n";
-            std::flush(std::cout);
-
-            run_download_loop(t, g_running);
-
-            std::cout << "\nShutting down...\n";
-            t.pause();
-            monitor.stop();
-            _exit(0);
-        }
-
-        // Parent: report the child PID and return control to the shell.
-        std::cout << "Started background download (child PID "
-                  << static_cast<unsigned long>(pid) << ").\n";
-        std::cout << "Use 'list', 'status', 'pause', 'resume', or 'remove' to manage it.\n";
-        std::flush(std::cout);
-        std::fflush(stdout);
         return 0;
     }
 
